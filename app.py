@@ -737,7 +737,13 @@ if not st.session_state["language_confirmed"]:
             """,
             unsafe_allow_html=True,
         )
-        gate_lang = st.selectbox("Language / Мова / Язык", APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="language_gate")
+        gate_lang = st.selectbox(
+            "Language / Мова / Язык",
+            APP_LANGUAGES,
+            index=APP_LANGUAGES.index(app_language),
+            key="language_gate",
+            label_visibility="collapsed",
+        )
         gate_t = UI_TEXT[gate_lang]
         if st.button(gate_t["continue"], type="primary", use_container_width=True):
             st.session_state["app_language"] = gate_lang
