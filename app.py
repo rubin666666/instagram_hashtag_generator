@@ -76,6 +76,8 @@ UI_TEXT = {
         "goal": "Goal",
         "goal_hint": "Pick the main outcome you want from this post.",
         "apply_presets": "Apply platform defaults",
+        "recommended_setup": "Recommended setup",
+        "reset_form": "Reset form",
         "examples_title": "Quick examples",
         "examples_copy": "Start from a ready-made example, then tweak it for your niche.",
         "topic": "Topic",
@@ -102,6 +104,8 @@ UI_TEXT = {
         "caption_copy": "Use it as-is or edit it before posting.",
         "history_title": "Recent generations",
         "history_empty": "Your recent hashtag packs will appear here.",
+        "history_restore": "Use again",
+        "history_clear": "Clear history",
         "copy": "Copy all",
         "copy_caption": "Copy caption",
         "download": "Download TXT",
@@ -164,6 +168,8 @@ UI_TEXT = {
         "goal": "Ціль",
         "goal_hint": "Оберіть головний результат, який має дати цей контент.",
         "apply_presets": "Застосувати пресети платформи",
+        "recommended_setup": "Рекомендоване налаштування",
+        "reset_form": "Очистити форму",
         "examples_title": "Швидкі приклади",
         "examples_copy": "Почніть із готового прикладу, а потім підлаштуйте його під свою нішу.",
         "topic": "Тема",
@@ -190,6 +196,8 @@ UI_TEXT = {
         "caption_copy": "Можна використати як є або відредагувати перед публікацією.",
         "history_title": "Останні генерації",
         "history_empty": "Тут з'являтимуться ваші останні набори хештегів.",
+        "history_restore": "Використати знову",
+        "history_clear": "Очистити історію",
         "copy": "Скопіювати все",
         "copy_caption": "Скопіювати підпис",
         "download": "Завантажити TXT",
@@ -252,6 +260,8 @@ UI_TEXT = {
         "goal": "Цель",
         "goal_hint": "Выберите главный результат, который должен дать этот контент.",
         "apply_presets": "Применить пресеты платформы",
+        "recommended_setup": "Рекомендуемая настройка",
+        "reset_form": "Очистить форму",
         "examples_title": "Быстрые примеры",
         "examples_copy": "Начните с готового примера, а потом подстройте его под свою нишу.",
         "topic": "Тема",
@@ -278,6 +288,8 @@ UI_TEXT = {
         "caption_copy": "Можно использовать как есть или отредактировать перед публикацией.",
         "history_title": "Последние генерации",
         "history_empty": "Здесь будут появляться ваши последние наборы хештегов.",
+        "history_restore": "Использовать снова",
+        "history_clear": "Очистить историю",
         "copy": "Скопировать все",
         "copy_caption": "Скопировать caption",
         "download": "Скачать TXT",
@@ -487,8 +499,20 @@ def render_group_card(title: str, tags: list[str]) -> str:
 
 def push_history_item(item: dict[str, str]) -> None:
     history = st.session_state.get("generation_history", [])
-    history = [item] + [entry for entry in history if entry != item]
+    history = [item] + [entry for entry in history if entry.get("topic") != item.get("topic") or entry.get("platform_key") != item.get("platform_key")]
     st.session_state["generation_history"] = history[:6]
+
+
+def restore_history_item(item: dict[str, str]) -> None:
+    st.session_state["platform_key"] = item["platform_key"]
+    st.session_state["content_type_key"] = item["content_type_key"]
+    st.session_state["style_key"] = item["style_key"]
+    st.session_state["goal_key"] = item["goal_key"]
+    st.session_state["hashtag_language"] = item["hashtag_language"]
+    st.session_state["count_value"] = item["count"]
+    st.session_state["topic_input"] = item["topic"]
+    st.session_state["audience_input"] = item["audience"]
+    st.session_state["last_preset_platform"] = item["platform_key"]
 
 
 def copy_button(text: str, button_label: str) -> None:
@@ -1148,6 +1172,11 @@ with left_col:
             format_func=lambda key: localize_platform(key, t),
             key="platform_key",
         )
+        recommended = platform_defaults(platform_key)
+        st.markdown(
+            f'<div class="tiny-note">{t["recommended_setup"]}: {localize_goal(recommended["goal"], t)} · {localize_style(recommended["style"], t)} · {recommended["count"]}</div>',
+            unsafe_allow_html=True,
+        )
     with row1[1]:
         content_type_key = st.selectbox(
             t["content_type"],
@@ -1186,13 +1215,30 @@ with left_col:
         generate = st.button(t["generate"], type="primary", use_container_width=True)
     with row5[1]:
         regenerate = st.button(t["regenerate"], use_container_width=True)
-    if st.button(t["apply_presets"], use_container_width=True):
+    row6 = st.columns(2)
+    with row6[0]:
+        apply_presets = st.button(t["apply_presets"], use_container_width=True)
+    with row6[1]:
+        reset_form = st.button(t["reset_form"], use_container_width=True)
+    if apply_presets:
         defaults = platform_defaults(platform_key)
         st.session_state["content_type_key"] = defaults["content_type"]
         st.session_state["style_key"] = defaults["style"]
         st.session_state["goal_key"] = defaults["goal"]
         st.session_state["count_value"] = defaults["count"]
         st.session_state["last_preset_platform"] = platform_key
+        st.rerun()
+    if reset_form:
+        defaults = platform_defaults(platform_key)
+        st.session_state["topic_input"] = ""
+        st.session_state["audience_input"] = ""
+        st.session_state["content_type_key"] = defaults["content_type"]
+        st.session_state["style_key"] = defaults["style"]
+        st.session_state["goal_key"] = defaults["goal"]
+        st.session_state["count_value"] = defaults["count"]
+        st.session_state["caption_text"] = ""
+        st.session_state["hashtags_sections"] = None
+        st.session_state["hashtags_flat"] = ""
         st.rerun()
 
 should_generate = generate or (regenerate and bool(st.session_state.get("last_topic")))
@@ -1241,8 +1287,15 @@ if should_generate:
                 push_history_item(
                     {
                         "topic": active_topic,
+                        "audience": active_audience,
+                        "platform_key": platform_key,
                         "platform": localize_platform(platform_key, t),
+                        "content_type_key": content_type_key,
+                        "style_key": style_key,
+                        "goal_key": goal_key,
                         "goal": localize_goal(goal_key, t),
+                        "hashtag_language": hashtag_language,
+                        "count": count,
                     }
                 )
             except Exception as exc:
@@ -1328,11 +1381,17 @@ with right_col:
         unsafe_allow_html=True,
     )
     if history:
-        history_html = "".join(
-            f'<div class="history-item"><strong>{item["topic"]}</strong><span>{item["platform"]} · {item["goal"]}</span></div>'
-            for item in history
-        )
-        st.markdown(f'<div class="history-list">{history_html}</div>', unsafe_allow_html=True)
+        for idx, item in enumerate(history):
+            st.markdown(
+                f'<div class="history-item"><strong>{item["topic"]}</strong><span>{item["platform"]} · {item["goal"]}</span></div>',
+                unsafe_allow_html=True,
+            )
+            if st.button(t["history_restore"], key=f"restore_history_{idx}", use_container_width=True):
+                restore_history_item(item)
+                st.rerun()
+        if st.button(t["history_clear"], key="clear_history", use_container_width=True):
+            st.session_state["generation_history"] = []
+            st.rerun()
 
 st.markdown('<div class="footer-wrap">', unsafe_allow_html=True)
 footer_cols = st.columns([0.34, 0.66])
