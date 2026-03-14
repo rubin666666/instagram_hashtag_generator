@@ -1,6 +1,6 @@
-# Instagram Hashtag Generator
+# TagLift AI
 
-A polished Streamlit app that creates ready-to-use Instagram hashtags with OpenAI.
+TagLift AI is a polished Streamlit app that creates ready-to-use Instagram hashtags with OpenAI.
 
 Built for creators, small businesses, personal brands, coaches, and Instagram shops that want faster content packaging without manually searching for hashtags.
 
@@ -12,6 +12,13 @@ Built for creators, small businesses, personal brands, coaches, and Instagram sh
 - works for posts, reels, stories, product promos, and personal brand content
 - groups results into popular, medium, niche, and micro-niche hashtags
 - lets users copy the final set or download it as `.txt`
+
+## Included sales assets
+
+- [Product page copy](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\PRODUCT_PAGE.md)
+- [Marketing copy](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\MARKETING_COPY.md)
+- [Launch checklist](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\LAUNCH_CHECKLIST.md)
+- [Brandmark](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\assets\brandmark.svg)
 
 ## Local setup
 

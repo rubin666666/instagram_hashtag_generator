@@ -8,8 +8,8 @@ from openai import OpenAI
 
 
 st.set_page_config(
-    page_title="Instagram Hashtag Generator",
-    page_icon="#",
+    page_title="TagLift AI",
+    page_icon="assets/favicon.svg",
     layout="wide",
 )
 
@@ -41,6 +41,7 @@ UI_TEXT = {
         "hashtag_language": "Hashtag language",
         "count": "Number of hashtags",
         "hero_badge": "AI tool for creators and businesses",
+        "brand_name": "TagLift AI",
         "hero_title": "Generate Instagram hashtags that look ready to publish",
         "hero_copy": "Create hashtag sets for posts, reels, stories, and product promos in seconds. Built for creators, personal brands, and small businesses.",
         "hero_point_1": "3 interface languages",
@@ -84,6 +85,7 @@ UI_TEXT = {
         "who_3": "Instagram shops",
         "who_4": "Experts and coaches",
         "footer": "Simple AI hashtag generation for Instagram content.",
+        "footer_brand": "TagLift AI",
         "group_popular": "Popular",
         "group_medium": "Medium",
         "group_niche": "Niche",
@@ -106,6 +108,7 @@ UI_TEXT = {
         "hashtag_language": "Мова хештегів",
         "count": "Кількість хештегів",
         "hero_badge": "AI-інструмент для авторів і бізнесу",
+        "brand_name": "TagLift AI",
         "hero_title": "Генеруйте Instagram-хештеги, які вже готові до публікації",
         "hero_copy": "Створюйте набори хештегів для постів, рілсів, сторіс і промо-контенту за секунди. Для блогерів, особистих брендів і малого бізнесу.",
         "hero_point_1": "3 мови інтерфейсу",
@@ -149,6 +152,7 @@ UI_TEXT = {
         "who_3": "Instagram-магазини",
         "who_4": "Експерти та коучі",
         "footer": "Простий AI-інструмент для генерації Instagram-хештегів.",
+        "footer_brand": "TagLift AI",
         "group_popular": "Популярні",
         "group_medium": "Середні",
         "group_niche": "Нішеві",
@@ -171,6 +175,7 @@ UI_TEXT = {
         "hashtag_language": "Язык хештегов",
         "count": "Количество хештегов",
         "hero_badge": "AI-инструмент для авторов и бизнеса",
+        "brand_name": "TagLift AI",
         "hero_title": "Генерируйте Instagram-хештеги, которые уже готовы к публикации",
         "hero_copy": "Создавайте наборы хештегов для постов, рилсов, сторис и промо-контента за секунды. Для блогеров, личных брендов и малого бизнеса.",
         "hero_point_1": "3 языка интерфейса",
@@ -214,6 +219,7 @@ UI_TEXT = {
         "who_3": "Instagram-магазины",
         "who_4": "Эксперты и коучи",
         "footer": "Простой AI-инструмент для генерации Instagram-хештегов.",
+        "footer_brand": "TagLift AI",
         "group_popular": "Популярные",
         "group_medium": "Средние",
         "group_niche": "Нишевые",
@@ -464,6 +470,27 @@ st.markdown(
         letter-spacing: 0.04em;
         text-transform: uppercase;
       }
+      .brand-row {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .brand-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.4rem;
+        box-shadow: 0 12px 24px rgba(31, 41, 55, 0.10);
+      }
+      .brand-name {
+        color: var(--accent-dark);
+        font-size: 1rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
       .hero-title {
         margin: 0.9rem 0 0.7rem;
         font-size: clamp(2.1rem, 4vw, 4.1rem);
@@ -637,6 +664,10 @@ with hero_col:
     st.markdown(
         f"""
         <div class="hero-shell">
+          <div class="brand-row">
+            <img class="brand-logo" src="data:image/svg+xml;utf8,%3Csvg width='128' height='128' viewBox='0 0 128 128' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='16' y1='16' x2='112' y2='112' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F97316'/%3E%3Cstop offset='1' stop-color='%23D9485F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='12' y='12' width='104' height='104' rx='28' fill='url(%23g)'/%3E%3Cpath d='M42 49H57V34H72V49H87V64H72V79H57V64H42V49Z' fill='%23FFF7F0'/%3E%3C/svg%3E" alt="TagLift AI" />
+            <div class="brand-name">{t["brand_name"]}</div>
+          </div>
           <span class="badge">{t["hero_badge"]}</span>
           <h1 class="hero-title">{t["hero_title"]}</h1>
           <p class="hero-copy">{t["hero_copy"]}</p>
@@ -792,7 +823,7 @@ st.markdown(
         <span class="audience-pill">{t["who_4"]}</span>
       </div>
     </div>
-    <div class="footer-note">{t["footer"]}</div>
+    <div class="footer-note">{t["footer_brand"]} · {t["footer"]}</div>
     """,
     unsafe_allow_html=True,
 )
