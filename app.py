@@ -916,10 +916,11 @@ with right_col:
         )
     st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="footer-bar"><div class="footer-grid"><div>', unsafe_allow_html=True)
-st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
-st.markdown('</div><div>', unsafe_allow_html=True)
-with st.container():
+st.markdown('<div class="footer-bar">', unsafe_allow_html=True)
+footer_cols = st.columns([0.34, 0.66])
+with footer_cols[0]:
+    st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
+with footer_cols[1]:
     new_language = st.selectbox(
         t["footer_language"],
         APP_LANGUAGES,
@@ -929,4 +930,4 @@ with st.container():
 if new_language != app_language:
     st.session_state["app_language"] = new_language
     st.rerun()
-st.markdown("</div></div></div>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
