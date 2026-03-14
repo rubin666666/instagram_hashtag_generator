@@ -17,10 +17,20 @@ st.set_page_config(
 
 APP_LANGUAGES = ["English", "Українська", "Русский"]
 HASHTAG_LANGUAGES = ["English", "Ukrainian", "Russian"]
+PLATFORMS = {
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "youtube": "YouTube",
+    "linkedin": "LinkedIn",
+    "pinterest": "Pinterest",
+    "facebook": "Facebook",
+    "x": "X",
+}
 CONTENT_TYPES = {
-    "post": "A regular Instagram feed post",
-    "reel": "A short-form Instagram Reel",
-    "story": "An Instagram Story",
+    "post": "A standard social media post",
+    "short_video": "A short vertical video",
+    "story": "A story-style post",
+    "carousel": "A multi-slide carousel post",
     "product_promo": "A promotional product-focused post",
     "personal_brand": "A personal branding post",
 }
@@ -30,6 +40,15 @@ HASHTAG_STYLES = {
     "niche": "Favor audience specificity and buyer intent.",
 }
 GROUP_ORDER = ["popular", "medium", "niche", "micro"]
+PLATFORM_GUIDES = {
+    "instagram": "Prioritize discoverability, niche relevance, and a natural Instagram mix.",
+    "tiktok": "Favor trend-aware, punchy, discovery-focused tags that fit TikTok culture.",
+    "youtube": "Favor searchable, topic-driven tags that support video discovery.",
+    "linkedin": "Keep hashtags professional, industry-relevant, and less spammy.",
+    "pinterest": "Favor descriptive, keyword-rich tags that match search intent and inspiration topics.",
+    "facebook": "Keep hashtags broad but restrained, with readable tags and practical relevance.",
+    "x": "Keep hashtags concise, topical, and suitable for fast-moving conversation.",
+}
 
 
 UI_TEXT = {
@@ -42,11 +61,12 @@ UI_TEXT = {
         "footer_language": "Change interface language",
         "footer_title": "Interface settings",
         "footer_copy": "You can change the app language here any time.",
-        "hero_badge": "Instagram-inspired AI tool",
-        "hero_title": "Generate Instagram hashtags in a clean, simple flow",
-        "hero_copy": "Describe the post, choose the format, and get a ready-to-use hashtag pack without digging through random prompts.",
+        "hero_badge": "Multi-platform AI tool",
+        "hero_title": "Generate social media hashtags in one clean flow",
+        "hero_copy": "Choose a platform, describe the content, and get a ready-to-use hashtag pack for your post, video, story, or campaign.",
         "step_1": "1. Describe your content",
         "step_2": "2. Get your hashtag pack",
+        "platform": "Platform",
         "topic": "Topic",
         "topic_placeholder": "Example: handmade candles, fitness coach, coffee shop opening",
         "audience": "Target audience",
@@ -68,26 +88,35 @@ UI_TEXT = {
         "result_copy": "Your result is grouped by popularity and niche level so it is easier to use.",
         "copy": "Copy all",
         "download": "Download TXT",
-        "file_name": "instagram_hashtags.txt",
+        "file_name": "social_media_hashtags.txt",
         "count_card": "Total",
+        "platform_card": "Platform",
         "lang_card": "Language",
         "strategy_card": "Strategy",
         "format_card": "Format",
+        "platform_instagram": "Instagram",
+        "platform_tiktok": "TikTok",
+        "platform_youtube": "YouTube",
+        "platform_linkedin": "LinkedIn",
+        "platform_pinterest": "Pinterest",
+        "platform_facebook": "Facebook",
+        "platform_x": "X",
         "group_popular": "Popular",
         "group_medium": "Medium",
         "group_niche": "Niche",
         "group_micro": "Micro-niche",
         "content_post": "Post",
-        "content_reel": "Reel",
+        "content_short_video": "Short video",
         "content_story": "Story",
+        "content_carousel": "Carousel",
         "content_product_promo": "Product promo",
         "content_personal_brand": "Personal brand",
         "style_balanced": "Balanced",
         "style_growth": "Growth",
         "style_niche": "Niche",
-        "tip_1": "Use for posts, reels, and stories",
+        "tip_1": "Instagram, TikTok, YouTube, LinkedIn, Pinterest, and more",
         "tip_2": "Copy everything with one click",
-        "tip_3": "Switch between 3 languages",
+        "tip_3": "Switch interface and hashtag output between 3 languages",
         "empty_title": "No hashtags yet",
         "empty_copy": "Fill in the topic and click generate to see the hashtag pack here.",
     },
@@ -100,11 +129,12 @@ UI_TEXT = {
         "footer_language": "Змінити мову інтерфейсу",
         "footer_title": "Налаштування інтерфейсу",
         "footer_copy": "Тут можна будь-коли змінити мову застосунку.",
-        "hero_badge": "AI-інструмент у стилі Instagram",
-        "hero_title": "Генеруйте Instagram-хештеги в чистому і простому потоці",
-        "hero_copy": "Опишіть пост, виберіть формат і отримайте готовий набір хештегів без хаотичних промптів.",
+        "hero_badge": "AI-інструмент для соцмереж",
+        "hero_title": "Генеруйте хештеги для соцмереж в одному чистому потоці",
+        "hero_copy": "Оберіть платформу, опишіть контент і отримайте готовий набір хештегів для поста, відео, сторіс або кампанії.",
         "step_1": "1. Опишіть свій контент",
         "step_2": "2. Отримайте пакет хештегів",
+        "platform": "Платформа",
         "topic": "Тема",
         "topic_placeholder": "Наприклад: свічки ручної роботи, фітнес-тренер, відкриття кав'ярні",
         "audience": "Цільова аудиторія",
@@ -126,26 +156,35 @@ UI_TEXT = {
         "result_copy": "Результат згрупований за популярністю і нішевістю, щоб ним було простіше користуватись.",
         "copy": "Скопіювати все",
         "download": "Завантажити TXT",
-        "file_name": "instagram_hashtags.txt",
+        "file_name": "social_media_hashtags.txt",
         "count_card": "Усього",
+        "platform_card": "Платформа",
         "lang_card": "Мова",
         "strategy_card": "Стратегія",
         "format_card": "Формат",
+        "platform_instagram": "Instagram",
+        "platform_tiktok": "TikTok",
+        "platform_youtube": "YouTube",
+        "platform_linkedin": "LinkedIn",
+        "platform_pinterest": "Pinterest",
+        "platform_facebook": "Facebook",
+        "platform_x": "X",
         "group_popular": "Популярні",
         "group_medium": "Середні",
         "group_niche": "Нішеві",
         "group_micro": "Мікроніша",
         "content_post": "Пост",
-        "content_reel": "Рілс",
+        "content_short_video": "Коротке відео",
         "content_story": "Сторіс",
+        "content_carousel": "Карусель",
         "content_product_promo": "Промо продукту",
         "content_personal_brand": "Особистий бренд",
         "style_balanced": "Баланс",
         "style_growth": "Ріст",
         "style_niche": "Ніша",
-        "tip_1": "Для постів, рілсів і сторіс",
+        "tip_1": "Instagram, TikTok, YouTube, LinkedIn, Pinterest та інші",
         "tip_2": "Копіювання в один клік",
-        "tip_3": "Перемикання між 3 мовами",
+        "tip_3": "Інтерфейс і хештеги трьома мовами",
         "empty_title": "Хештегів ще немає",
         "empty_copy": "Заповніть тему і натисніть генерацію, щоб побачити тут результат.",
     },
@@ -158,11 +197,12 @@ UI_TEXT = {
         "footer_language": "Изменить язык интерфейса",
         "footer_title": "Настройки интерфейса",
         "footer_copy": "Здесь можно в любой момент изменить язык приложения.",
-        "hero_badge": "AI-инструмент в стиле Instagram",
-        "hero_title": "Генерируйте Instagram-хештеги в чистом и простом интерфейсе",
-        "hero_copy": "Опишите пост, выберите формат и получите готовый набор хештегов без хаотичных промптов.",
+        "hero_badge": "AI-инструмент для соцсетей",
+        "hero_title": "Генерируйте хештеги для соцсетей в одном чистом интерфейсе",
+        "hero_copy": "Выберите платформу, опишите контент и получите готовый набор хештегов для поста, видео, сторис или кампании.",
         "step_1": "1. Опишите свой контент",
         "step_2": "2. Получите пакет хештегов",
+        "platform": "Платформа",
         "topic": "Тема",
         "topic_placeholder": "Например: свечи ручной работы, фитнес-тренер, открытие кофейни",
         "audience": "Целевая аудитория",
@@ -184,26 +224,35 @@ UI_TEXT = {
         "result_copy": "Результат сгруппирован по популярности и нишевости, чтобы им было проще пользоваться.",
         "copy": "Скопировать все",
         "download": "Скачать TXT",
-        "file_name": "instagram_hashtags.txt",
+        "file_name": "social_media_hashtags.txt",
         "count_card": "Всего",
+        "platform_card": "Платформа",
         "lang_card": "Язык",
         "strategy_card": "Стратегия",
         "format_card": "Формат",
+        "platform_instagram": "Instagram",
+        "platform_tiktok": "TikTok",
+        "platform_youtube": "YouTube",
+        "platform_linkedin": "LinkedIn",
+        "platform_pinterest": "Pinterest",
+        "platform_facebook": "Facebook",
+        "platform_x": "X",
         "group_popular": "Популярные",
         "group_medium": "Средние",
         "group_niche": "Нишевые",
         "group_micro": "Микрониша",
         "content_post": "Пост",
-        "content_reel": "Рилс",
+        "content_short_video": "Короткое видео",
         "content_story": "Сторис",
+        "content_carousel": "Карусель",
         "content_product_promo": "Промо продукта",
         "content_personal_brand": "Личный бренд",
         "style_balanced": "Баланс",
         "style_growth": "Рост",
         "style_niche": "Ниша",
-        "tip_1": "Для постов, рилсов и сторис",
+        "tip_1": "Instagram, TikTok, YouTube, LinkedIn, Pinterest и другие",
         "tip_2": "Копирование в один клик",
-        "tip_3": "Переключение между 3 языками",
+        "tip_3": "Интерфейс и хештеги на 3 языках",
         "empty_title": "Хештегов пока нет",
         "empty_copy": "Заполните тему и нажмите генерацию, чтобы увидеть здесь результат.",
     },
@@ -239,12 +288,14 @@ def compute_group_sizes(total_count: int) -> dict[str, int]:
     return result
 
 
-def build_prompt(topic: str, content_type_key: str, audience: str, style_key: str, hashtag_language: str, count: int) -> str:
+def build_prompt(platform_key: str, topic: str, content_type_key: str, audience: str, style_key: str, hashtag_language: str, count: int) -> str:
     sizes = compute_group_sizes(count)
+    platform_name = PLATFORMS[platform_key]
     return dedent(
         f"""
-        You are an Instagram growth assistant.
-        Generate exactly {count} Instagram hashtags.
+        You are a social media growth assistant.
+        Generate exactly {count} hashtags for {platform_name}.
+        Platform guidance: {PLATFORM_GUIDES[platform_key]}
         Topic: {topic}
         Content type: {CONTENT_TYPES[content_type_key]}
         Audience: {audience or "General audience"}
@@ -303,6 +354,10 @@ def flatten_sections(sections: dict[str, list[str]]) -> str:
 
 def localize_content_type(key: str, t: dict[str, str]) -> str:
     return t[f"content_{key}"]
+
+
+def localize_platform(key: str, t: dict[str, str]) -> str:
+    return t[f"platform_{key}"]
 
 
 def localize_style(key: str, t: dict[str, str]) -> str:
@@ -781,6 +836,7 @@ if "language_gate_choice" not in st.session_state:
 
 app_language = st.session_state.get("app_language", APP_LANGUAGES[0])
 t = UI_TEXT[app_language]
+platform_labels = {localize_platform(key, t): key for key in PLATFORMS}
 content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
 style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
 
@@ -825,7 +881,7 @@ st.markdown(
             <div class="brand-name">{t["brand"]}</div>
             <div class="brand-tagline">{t["hero_badge"]}</div>
           </div>
-          <div class="brand-subtitle">Hashtag generator</div>
+          <div class="brand-subtitle">Social hashtag generator</div>
         </div>
       </div>
     </div>
@@ -868,25 +924,31 @@ with left_col:
     audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
     row1 = st.columns(2)
     with row1[0]:
-        content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
+        platform_label = st.selectbox(t["platform"], list(platform_labels.keys()))
     with row1[1]:
-        style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
+        content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
     row2 = st.columns(2)
     with row2[0]:
-        hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
+        style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
     with row2[1]:
-        count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
+        hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
     row3 = st.columns(2)
     with row3[0]:
-        model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
+        count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
     with row3[1]:
-        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
+        model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
     row4 = st.columns(2)
     with row4[0]:
-        generate = st.button(t["generate"], type="primary", use_container_width=True)
+        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
     with row4[1]:
+        st.caption(t["api_key_help"])
+    row5 = st.columns(2)
+    with row5[0]:
+        generate = st.button(t["generate"], type="primary", use_container_width=True)
+    with row5[1]:
         regenerate = st.button(t["regenerate"], use_container_width=True)
 
+platform_key = platform_labels[platform_label]
 content_type_key = content_labels[content_type_label]
 style_key = style_labels[style_label]
 should_generate = generate or (regenerate and bool(st.session_state.get("last_topic")))
@@ -903,6 +965,7 @@ if should_generate:
         else:
             st.session_state["last_topic"] = active_topic
             st.session_state["last_audience"] = active_audience
+            st.session_state["last_platform"] = platform_key
             st.session_state["last_content_type"] = content_type_key
             st.session_state["last_style"] = style_key
             st.session_state["last_language"] = hashtag_language
@@ -912,6 +975,7 @@ if should_generate:
                     response = client.responses.create(
                         model=model,
                         input=build_prompt(
+                            platform_key=platform_key,
                             topic=active_topic,
                             content_type_key=content_type_key,
                             audience=active_audience,
@@ -929,8 +993,8 @@ if should_generate:
 
 sections = st.session_state.get("hashtags_sections")
 flat_hashtags = st.session_state.get("hashtags_flat", "")
+last_platform = st.session_state.get("last_platform", platform_key)
 last_language = st.session_state.get("last_language", hashtag_language)
-last_style = st.session_state.get("last_style", style_key)
 last_content_type = st.session_state.get("last_content_type", content_type_key)
 total_generated = len(flat_hashtags.splitlines()) if flat_hashtags else 0
 
@@ -949,8 +1013,8 @@ with right_col:
             <div class="result-copy">{t["result_copy"]}</div>
             <div class="metric-grid">
               {render_metric(t["count_card"], str(total_generated))}
+              {render_metric(t["platform_card"], localize_platform(last_platform, t))}
               {render_metric(t["lang_card"], last_language)}
-              {render_metric(t["strategy_card"], localize_style(last_style, t))}
               {render_metric(t["format_card"], localize_content_type(last_content_type, t))}
             </div>
             """,

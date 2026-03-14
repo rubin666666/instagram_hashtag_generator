@@ -1,15 +1,15 @@
 # TagLift AI
 
-TagLift AI is a polished Streamlit app that creates ready-to-use Instagram hashtags with OpenAI.
+TagLift AI is a polished Streamlit app that creates ready-to-use hashtags for multiple social media platforms with OpenAI.
 
-Built for creators, small businesses, personal brands, coaches, and Instagram shops that want faster content packaging without manually searching for hashtags.
+Built for creators, small businesses, personal brands, coaches, and online shops that want faster content packaging without manually searching for hashtags.
 
 ## What the app does
 
-- generates Instagram hashtags with OpenAI
+- generates hashtags for Instagram, TikTok, YouTube, LinkedIn, Pinterest, Facebook, and X
 - supports 3 interface languages: English, Ukrainian, Russian
 - supports 3 hashtag output languages: English, Ukrainian, Russian
-- works for posts, reels, stories, product promos, and personal brand content
+- works for posts, short videos, stories, carousels, product promos, and personal brand content
 - groups results into popular, medium, niche, and micro-niche hashtags
 - lets users copy the final set or download it as `.txt`
 
