@@ -374,13 +374,14 @@ st.markdown(
       .topbar-inner {
         display:flex;
         align-items:center;
-        justify-content:space-between;
+        justify-content:flex-start;
         gap:1rem;
       }
       .brand-box {
         display:flex;
         align-items:center;
         gap:0.85rem;
+        flex: 1 1 auto;
       }
       .brand-mark {
         width:44px;
@@ -400,6 +401,11 @@ st.markdown(
         font-weight: 900;
         letter-spacing: 0.04em;
         text-transform: uppercase;
+      }
+      .brand-subtitle {
+        color: var(--muted);
+        font-weight: 700;
+        margin-left: auto;
       }
       .hero-card {
         padding: 1.4rem;
@@ -546,6 +552,12 @@ st.markdown(
         background:var(--panel-2);
         border:1px solid var(--border);
       }
+      .subtle-note {
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin-top: -0.2rem;
+        margin-bottom: 0.85rem;
+      }
       div[data-testid="stTextInput"] input,
       div[data-testid="stSelectbox"] > div,
       div[data-testid="stTextArea"] textarea {
@@ -594,6 +606,9 @@ st.markdown(
         .hero-grid, .metric-grid, .group-grid {
           grid-template-columns:1fr;
         }
+        .brand-subtitle {
+          display:none;
+        }
       }
     </style>
     """,
@@ -601,31 +616,25 @@ st.markdown(
 )
 
 
-top_left, top_right = st.columns([0.72, 0.28])
-with top_left:
-    app_language = st.session_state.get("top_language", APP_LANGUAGES[0])
-    t = UI_TEXT[app_language]
-    content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-    style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
-    st.markdown(
-        f"""
-        <div class="topbar">
-          <div class="topbar-inner">
-            <div class="brand-box">
-              <div class="brand-mark">+</div>
-              <div class="brand-name">{t["brand"]}</div>
-            </div>
-            <div style="color:#6b7280;font-weight:700;">Instagram hashtag generator</div>
-          </div>
+app_language = st.session_state.get("app_language", APP_LANGUAGES[0])
+t = UI_TEXT[app_language]
+content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+
+st.markdown(
+    f"""
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand-box">
+          <div class="brand-mark">+</div>
+          <div class="brand-name">{t["brand"]}</div>
+          <div class="brand-subtitle">Instagram hashtag generator</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with top_right:
-    app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="top_language")
-    t = UI_TEXT[app_language]
-    content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-    style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+      </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 st.markdown(
     f"""
@@ -651,6 +660,7 @@ left_col, right_col = st.columns([0.98, 1.02], gap="large")
 
 with left_col:
     st.markdown(f'<div class="panel"><div class="section-title">{t["step_1"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="subtle-note">{t["hero_copy"]}</div>', unsafe_allow_html=True)
     topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
     audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
     row1 = st.columns(2)
@@ -667,11 +677,19 @@ with left_col:
     with row3[0]:
         model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
     with row3[1]:
-        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
+        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
+        t = UI_TEXT[app_language]
+        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
     row4 = st.columns(2)
     with row4[0]:
-        generate = st.button(t["generate"], type="primary", use_container_width=True)
+        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
     with row4[1]:
+        st.caption(t["api_key_help"])
+    row5 = st.columns(2)
+    with row5[0]:
+        generate = st.button(t["generate"], type="primary", use_container_width=True)
+    with row5[1]:
         regenerate = st.button(t["regenerate"], use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
