@@ -608,6 +608,23 @@ st.markdown(
         max-width: 520px;
         margin: 0.9rem auto 0;
       }
+      .lang-option {
+        display:block;
+        width:100%;
+        text-align:left;
+        border-radius:18px;
+        border:1px solid var(--border);
+        background: var(--panel-2);
+        color: var(--ink);
+        padding:0.95rem 1rem;
+        font-weight:700;
+        margin-bottom:0.65rem;
+      }
+      .lang-option.active {
+        border-color: rgba(214,41,118,0.45);
+        box-shadow: 0 0 0 1px rgba(214,41,118,0.18);
+        background: linear-gradient(135deg, rgba(253,29,29,0.12) 0%, rgba(214,41,118,0.10) 100%);
+      }
       .footer-bar {
         margin-top: 1.2rem;
         background: rgba(255,255,255,0.03);
@@ -757,13 +774,16 @@ if "app_language" not in st.session_state:
 if "language_confirmed" not in st.session_state:
     st.session_state["language_confirmed"] = False
 
+if "language_gate_choice" not in st.session_state:
+    st.session_state["language_gate_choice"] = APP_LANGUAGES[0]
+
 app_language = st.session_state.get("app_language", APP_LANGUAGES[0])
 t = UI_TEXT[app_language]
 content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
 style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
 
 if not st.session_state["language_confirmed"]:
-    gate_lang = app_language
+    gate_lang = st.session_state.get("language_gate_choice", app_language)
     gate_t = UI_TEXT[gate_lang]
     left_space, center_col, right_space = st.columns([0.26, 0.48, 0.26])
     with center_col:
@@ -778,13 +798,13 @@ if not st.session_state["language_confirmed"]:
             unsafe_allow_html=True,
         )
         st.markdown('<div class="gate-controls">', unsafe_allow_html=True)
-        gate_lang = st.selectbox(
-            "Language / Мова / Язык",
-            APP_LANGUAGES,
-            index=APP_LANGUAGES.index(app_language),
-            key="language_gate",
-            label_visibility="collapsed",
-        )
+        for option in APP_LANGUAGES:
+            css_class = "lang-option active" if option == gate_lang else "lang-option"
+            button_type = "primary" if option == gate_lang else "secondary"
+            if st.button(option, key=f"gate_lang_{option}", use_container_width=True, type=button_type):
+                gate_lang = option
+                st.session_state["language_gate_choice"] = option
+                st.rerun()
         gate_t = UI_TEXT[gate_lang]
         if st.button(gate_t["continue"], type="primary", use_container_width=True):
             st.session_state["app_language"] = gate_lang
