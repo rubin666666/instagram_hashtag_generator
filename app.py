@@ -708,6 +708,12 @@ with left_col:
         """,
         unsafe_allow_html=True,
     )
+    lang_col, lang_spacer = st.columns([0.48, 0.52])
+    with lang_col:
+        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
+        t = UI_TEXT[app_language]
+        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
     topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
     audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
     row1 = st.columns(2)
@@ -724,19 +730,12 @@ with left_col:
     with row3[0]:
         model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
     with row3[1]:
-        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
-        t = UI_TEXT[app_language]
-        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
+    st.caption(t["api_key_help"])
     row4 = st.columns(2)
     with row4[0]:
-        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
-    with row4[1]:
-        st.caption(t["api_key_help"])
-    row5 = st.columns(2)
-    with row5[0]:
         generate = st.button(t["generate"], type="primary", use_container_width=True)
-    with row5[1]:
+    with row4[1]:
         regenerate = st.button(t["regenerate"], use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
