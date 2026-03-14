@@ -611,6 +611,12 @@ st.markdown(
         border-radius: 22px;
         padding: 1rem;
       }
+      .footer-grid {
+        display:grid;
+        grid-template-columns: 0.34fr 0.66fr;
+        gap: 1rem;
+        align-items:end;
+      }
       .footer-title {
         color: var(--ink);
         font-weight: 800;
@@ -691,6 +697,9 @@ st.markdown(
       }
       @media (max-width: 900px) {
         .hero-grid, .metric-grid, .group-grid {
+          grid-template-columns:1fr;
+        }
+        .footer-grid {
           grid-template-columns:1fr;
         }
         .brand-subtitle {
@@ -907,11 +916,10 @@ with right_col:
         )
     st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="footer-bar">', unsafe_allow_html=True)
-footer_cols = st.columns([0.34, 0.66])
-with footer_cols[0]:
-    st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
-with footer_cols[1]:
+st.markdown('<div class="footer-bar"><div class="footer-grid"><div>', unsafe_allow_html=True)
+st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
+st.markdown('</div><div>', unsafe_allow_html=True)
+with st.container():
     new_language = st.selectbox(
         t["footer_language"],
         APP_LANGUAGES,
@@ -921,4 +929,4 @@ with footer_cols[1]:
 if new_language != app_language:
     st.session_state["app_language"] = new_language
     st.rerun()
-st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("</div></div></div>", unsafe_allow_html=True)
