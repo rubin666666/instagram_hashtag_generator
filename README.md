@@ -21,6 +21,7 @@ Built for creators, small businesses, personal brands, coaches, and online shops
 - [Product page copy](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\PRODUCT_PAGE.md)
 - [Marketing copy](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\MARKETING_COPY.md)
 - [Launch checklist](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\LAUNCH_CHECKLIST.md)
+- [Listing assets](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\LISTING_ASSETS.md)
 - [Brandmark](C:\Users\rubin\OneDrive\Рабочий стол\Projects\Бусінес\instagram_hashtag_generator\assets\brandmark.svg)
 
 ## Local setup

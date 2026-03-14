@@ -2,43 +2,57 @@
 
 ## Telegram / Instagram ad
 
-Need Instagram hashtags fast?
+Need captions and hashtags for social media fast?
 
-TagLift AI creates ready-to-use hashtag packs for posts, reels, stories, and promo content in seconds.
+TagLift AI helps you generate ready-to-use content packs for Instagram, TikTok, YouTube, LinkedIn, Pinterest, Facebook, and X in seconds.
 
+- platform-ready hashtag packs
+- short AI captions
 - 3 interface languages
-- 3 hashtag languages
-- copy or download the result
-- simple tool for creators and small business
+- 3 hashtag output languages
+- copy or download instantly
+
+Perfect for creators, small business, stores, and personal brands.
 
 ## Gumroad short description
 
-TagLift AI is a simple Streamlit app that generates Instagram hashtag packs with OpenAI. Built for creators, small businesses, shops, and personal brands.
+TagLift AI is a simple Streamlit app that generates social media captions and hashtag packs with OpenAI for Instagram, TikTok, YouTube, LinkedIn, Pinterest, Facebook, and X.
 
 ## Gumroad longer description
 
-TagLift AI helps you generate Instagram hashtags without wasting time on manual research.
+TagLift AI helps you create social media captions and hashtags without wasting time on manual research.
 
-Just enter your topic, choose the content type, pick the output language, and get a ready-to-use set of hashtags grouped by reach and specificity.
+Just choose the platform, enter your topic, select the goal and content type, and get a ready-to-use result in seconds.
 
 You can use it for:
 
-- Instagram posts
-- reels
-- stories
-- product promotions
-- personal brand content
+- Instagram posts and stories
+- TikTok short videos
+- YouTube video discovery
+- LinkedIn expert content
+- Pinterest search-focused content
+- Facebook promos and community posts
+- X topical content
 
 Included:
 
 - polished Streamlit app
 - 3 interface languages
 - 3 hashtag output languages
+- platform presets
+- caption generation
 - copy-to-clipboard
 - text export
+- recent history inside the app
 
 ## Pricing ideas
 
-- $5 entry offer
-- $9 standard digital product
-- $19 bundle with setup help or future updates
+- $9 entry offer
+- $15 standard product
+- $29 bundle with future updates or setup help
+
+## Short CTA lines
+
+- Create social media hashtags faster
+- Generate captions and tags in one flow
+- Publish quicker across multiple platforms
