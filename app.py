@@ -358,7 +358,7 @@ st.markdown(
         --panel: #20242c;
         --panel-2: #262b34;
         --ink: #f3f4f6;
-        --muted: #aeb6c2;
+        --muted: #c2cad6;
         --border: rgba(255,255,255,0.08);
       }
       .stApp {
@@ -712,13 +712,19 @@ st.markdown(
       }
       div[data-baseweb="input"] input,
       div[data-baseweb="select"] input,
+      div[data-baseweb="select"] span,
+      div[data-baseweb="select"] div,
       div[data-baseweb="input"] svg,
       div[data-baseweb="select"] svg {
+        color: var(--ink) !important;
+        fill: var(--ink) !important;
+      }
+      div[data-baseweb="select"] * {
         color: var(--ink) !important;
       }
       div[data-baseweb="input"] input::placeholder,
       textarea::placeholder {
-        color: #8d95a3 !important;
+        color: #a9b2c2 !important;
       }
       div[data-baseweb="input"]:focus-within,
       div[data-baseweb="select"]:focus-within {
@@ -748,6 +754,9 @@ st.markdown(
       }
       label, .stMarkdown, .stText, p {
         color: var(--ink);
+      }
+      [data-testid="stCaptionContainer"] {
+        color: var(--muted) !important;
       }
       [data-testid="stSliderTickBarMin"],
       [data-testid="stSliderTickBarMax"] {
