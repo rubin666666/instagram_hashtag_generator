@@ -796,42 +796,42 @@ with right_col:
         """,
         unsafe_allow_html=True,
     )
-        if sections and flat_hashtags:
-            st.markdown(
-                f"""
-                <div class="section-title" style="font-size:1.3rem; margin-top:0.35rem; margin-bottom:0.15rem;">{t["result_title"]}</div>
-                <div class="result-copy">{t["result_copy"]}</div>
-                <div class="metric-grid">
-                  {render_metric(t["count_card"], str(total_generated))}
-                  {render_metric(t["lang_card"], last_language)}
-                  {render_metric(t["strategy_card"], localize_style(last_style, t))}
-                  {render_metric(t["format_card"], localize_content_type(last_content_type, t))}
-                </div>
-                """,
-                unsafe_allow_html=True,
+    if sections and flat_hashtags:
+        st.markdown(
+            f"""
+            <div class="section-title" style="font-size:1.3rem; margin-top:0.35rem; margin-bottom:0.15rem;">{t["result_title"]}</div>
+            <div class="result-copy">{t["result_copy"]}</div>
+            <div class="metric-grid">
+              {render_metric(t["count_card"], str(total_generated))}
+              {render_metric(t["lang_card"], last_language)}
+              {render_metric(t["strategy_card"], localize_style(last_style, t))}
+              {render_metric(t["format_card"], localize_content_type(last_content_type, t))}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        action_cols = st.columns([0.42, 0.58])
+        with action_cols[0]:
+            copy_button(flat_hashtags, t["copy"])
+        with action_cols[1]:
+            st.download_button(
+                t["download"],
+                data=flat_hashtags,
+                file_name=t["file_name"],
+                mime="text/plain",
+                use_container_width=True,
             )
-            action_cols = st.columns([0.42, 0.58])
-            with action_cols[0]:
-                copy_button(flat_hashtags, t["copy"])
-            with action_cols[1]:
-                st.download_button(
-                    t["download"],
-                    data=flat_hashtags,
-                    file_name=t["file_name"],
-                    mime="text/plain",
-                    use_container_width=True,
-                )
-            groups_html = "".join(render_group_card(group_label(key, t), sections.get(key, [])) for key in GROUP_ORDER)
-            st.markdown(f'<div class="group-grid" style="margin-top:0.85rem;">{groups_html}</div>', unsafe_allow_html=True)
-            st.text_area(t["result_title"], flat_hashtags, height=170, label_visibility="collapsed")
-        else:
-            st.markdown(
-                f"""
-                <div class="empty-state">
-                  <div class="empty-title">{t["empty_title"]}</div>
-                  <div class="empty-copy">{t["empty_copy"]}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+        groups_html = "".join(render_group_card(group_label(key, t), sections.get(key, [])) for key in GROUP_ORDER)
+        st.markdown(f'<div class="group-grid" style="margin-top:0.85rem;">{groups_html}</div>', unsafe_allow_html=True)
+        st.text_area(t["result_title"], flat_hashtags, height=170, label_visibility="collapsed")
+    else:
+        st.markdown(
+            f"""
+            <div class="empty-state">
+              <div class="empty-title">{t["empty_title"]}</div>
+              <div class="empty-copy">{t["empty_copy"]}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
     st.markdown('</div>', unsafe_allow_html=True)
