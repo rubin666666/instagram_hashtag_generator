@@ -40,6 +40,8 @@ UI_TEXT = {
         "language_welcome": "Select the interface language to continue.",
         "continue": "Continue",
         "footer_language": "Change interface language",
+        "footer_title": "Interface settings",
+        "footer_copy": "You can change the app language here any time.",
         "hero_badge": "Instagram-inspired AI tool",
         "hero_title": "Generate Instagram hashtags in a clean, simple flow",
         "hero_copy": "Describe the post, choose the format, and get a ready-to-use hashtag pack without digging through random prompts.",
@@ -96,6 +98,8 @@ UI_TEXT = {
         "language_welcome": "Виберіть мову інтерфейсу, щоб продовжити.",
         "continue": "Продовжити",
         "footer_language": "Змінити мову інтерфейсу",
+        "footer_title": "Налаштування інтерфейсу",
+        "footer_copy": "Тут можна будь-коли змінити мову застосунку.",
         "hero_badge": "AI-інструмент у стилі Instagram",
         "hero_title": "Генеруйте Instagram-хештеги в чистому і простому потоці",
         "hero_copy": "Опишіть пост, виберіть формат і отримайте готовий набір хештегів без хаотичних промптів.",
@@ -152,6 +156,8 @@ UI_TEXT = {
         "language_welcome": "Выберите язык интерфейса, чтобы продолжить.",
         "continue": "Продолжить",
         "footer_language": "Изменить язык интерфейса",
+        "footer_title": "Настройки интерфейса",
+        "footer_copy": "Здесь можно в любой момент изменить язык приложения.",
         "hero_badge": "AI-инструмент в стиле Instagram",
         "hero_title": "Генерируйте Instagram-хештеги в чистом и простом интерфейсе",
         "hero_copy": "Опишите пост, выберите формат и получите готовый набор хештегов без хаотичных промптов.",
@@ -589,15 +595,30 @@ st.markdown(
         border: 1px solid var(--border);
         border-radius: 28px;
         box-shadow: 0 18px 48px rgba(0,0,0,0.28);
-        padding: 1.4rem;
+        padding: 1.6rem;
         text-align: center;
       }
+      .gate-copy {
+        color: var(--muted);
+        max-width: 360px;
+        margin: 0 auto 0.9rem;
+        line-height: 1.6;
+      }
       .footer-bar {
-        margin-top: 1rem;
+        margin-top: 1.2rem;
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border);
         border-radius: 22px;
         padding: 1rem;
+      }
+      .footer-title {
+        color: var(--ink);
+        font-weight: 800;
+        margin-bottom: 0.2rem;
+      }
+      .footer-copy {
+        color: var(--muted);
+        font-size: 0.9rem;
       }
       .stButton > button, .stDownloadButton > button {
         min-height:48px;
@@ -693,22 +714,26 @@ content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
 style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
 
 if not st.session_state["language_confirmed"]:
-    gate_lang = st.selectbox("Language / Мова / Язык", APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="language_gate")
+    gate_lang = app_language
     gate_t = UI_TEXT[gate_lang]
-    st.markdown(
-        f"""
-        <div class="language-gate">
-          <div class="brand-mark" style="margin:0 auto 1rem;">TL</div>
-          <div class="section-title">{gate_t["choose_language"]}</div>
-          <div class="subtle-note" style="margin-bottom:1rem;">{gate_t["language_welcome"]}</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    if st.button(gate_t["continue"], type="primary", use_container_width=True):
-        st.session_state["app_language"] = gate_lang
-        st.session_state["language_confirmed"] = True
-        st.rerun()
+    left_space, center_col, right_space = st.columns([0.26, 0.48, 0.26])
+    with center_col:
+        st.markdown(
+            f"""
+            <div class="language-gate">
+              <div class="brand-mark" style="margin:0 auto 1rem;">TL</div>
+              <div class="section-title">{gate_t["choose_language"]}</div>
+              <div class="gate-copy">{gate_t["language_welcome"]}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        gate_lang = st.selectbox("Language / Мова / Язык", APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="language_gate")
+        gate_t = UI_TEXT[gate_lang]
+        if st.button(gate_t["continue"], type="primary", use_container_width=True):
+            st.session_state["app_language"] = gate_lang
+            st.session_state["language_confirmed"] = True
+            st.rerun()
     st.stop()
 
 st.markdown(
@@ -885,14 +910,14 @@ with right_col:
 st.markdown('<div class="footer-bar">', unsafe_allow_html=True)
 footer_cols = st.columns([0.34, 0.66])
 with footer_cols[0]:
+    st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
+with footer_cols[1]:
     new_language = st.selectbox(
         t["footer_language"],
         APP_LANGUAGES,
         index=APP_LANGUAGES.index(app_language),
         key="footer_language_select",
     )
-with footer_cols[1]:
-    st.caption("TagLift AI")
 if new_language != app_language:
     st.session_state["app_language"] = new_language
     st.rerun()
