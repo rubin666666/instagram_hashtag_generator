@@ -361,7 +361,7 @@ st.markdown(
       .stApp [data-testid="stHeader"] {
         background: transparent;
       }
-      .topbar, .hero-card, .panel-head, .result-head, .result-panel {
+      .topbar, .hero-card {
         background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 26px;
@@ -481,16 +481,24 @@ st.markdown(
         color:#f9fafb;
         font-weight:700;
       }
-      .panel-head, .result-head, .result-panel {
-        padding:0.95rem 1.05rem;
+      .panel-shell, .results-shell {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: 0 18px 48px rgba(0,0,0,0.22);
+        padding: 1.1rem;
       }
-      .panel-head, .result-head {
-        margin-bottom: 0.8rem;
-        border-radius: 20px;
+      .section-eyebrow {
+        color:#ff93bf;
+        font-size:0.76rem;
+        font-weight:800;
+        letter-spacing:0.05em;
+        text-transform:uppercase;
+        margin-bottom:0.45rem;
       }
       .section-title {
         color:var(--ink);
-        font-size:1.12rem;
+        font-size:1.22rem;
         font-weight:800;
         margin-bottom:0.35rem;
       }
@@ -584,14 +592,8 @@ st.markdown(
       }
       .subtle-note {
         color: var(--muted);
-        font-size: 0.88rem;
-        margin-bottom: 0;
-      }
-      .form-shell, .results-shell {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 1rem;
+        font-size: 0.92rem;
+        margin-bottom: 1rem;
       }
       div[data-testid="stTextInput"] input,
       div[data-testid="stSelectbox"] > div,
@@ -666,7 +668,7 @@ st.markdown(
             <div class="brand-name">{t["brand"]}</div>
             <div class="brand-tagline">{t["hero_badge"]}</div>
           </div>
-          <div class="brand-subtitle">Instagram hashtag generator</div>
+          <div class="brand-subtitle">Hashtag generator</div>
         </div>
       </div>
     </div>
@@ -699,15 +701,13 @@ left_col, right_col = st.columns([0.98, 1.02], gap="large")
 with left_col:
     st.markdown(
         f"""
-        <div class="panel-head">
-          <div class="section-title" style="margin-bottom:0.35rem;">{t["step_1"]}</div>
+        <div class="panel-shell">
+          <div class="section-eyebrow">Step 1</div>
+          <div class="section-title">{t["step_1"]}</div>
           <div class="subtle-note">{t["hero_copy"]}</div>
-        </div>
         """,
         unsafe_allow_html=True,
     )
-    with st.container():
-        st.markdown('<div class="form-shell">', unsafe_allow_html=True)
         topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
         audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
         row1 = st.columns(2)
@@ -738,7 +738,7 @@ with left_col:
             generate = st.button(t["generate"], type="primary", use_container_width=True)
         with row5[1]:
             regenerate = st.button(t["regenerate"], use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 content_type_key = content_labels[content_type_label]
 style_key = style_labels[style_label]
@@ -790,18 +790,16 @@ total_generated = len(flat_hashtags.splitlines()) if flat_hashtags else 0
 with right_col:
     st.markdown(
         f"""
-        <div class="result-head">
-          <div class="section-title" style="margin-bottom:0;">{t["step_2"]}</div>
-        </div>
+        <div class="results-shell">
+          <div class="section-eyebrow">Step 2</div>
+          <div class="section-title">{t["step_2"]}</div>
         """,
         unsafe_allow_html=True,
     )
-    with st.container():
-        st.markdown('<div class="results-shell">', unsafe_allow_html=True)
         if sections and flat_hashtags:
             st.markdown(
                 f"""
-                <div class="section-title" style="font-size:1.3rem; margin-bottom:0.15rem;">{t["result_title"]}</div>
+                <div class="section-title" style="font-size:1.3rem; margin-top:0.35rem; margin-bottom:0.15rem;">{t["result_title"]}</div>
                 <div class="result-copy">{t["result_copy"]}</div>
                 <div class="metric-grid">
                   {render_metric(t["count_card"], str(total_generated))}
@@ -836,4 +834,4 @@ with right_col:
                 """,
                 unsafe_allow_html=True,
             )
-        st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
