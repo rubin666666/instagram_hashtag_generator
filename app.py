@@ -666,65 +666,53 @@ st.markdown(
       }
       div[data-testid="stTextInput"],
       div[data-testid="stSelectbox"],
-      div[data-testid="stTextArea"] {
+      div[data-testid="stTextArea"],
+      div[data-testid="stSlider"] {
         width: 100%;
-      }
-      .stApp input[type="text"],
-      .stApp input[type="password"],
-      .stApp textarea {
-        background: var(--panel-2) !important;
-        color: var(--ink) !important;
-        border: 1px solid var(--border) !important;
-        border-radius: 18px !important;
-        box-shadow: none !important;
-      }
-      .stApp input[type="text"]::placeholder,
-      .stApp input[type="password"]::placeholder,
-      .stApp textarea::placeholder {
-        color: #8d95a3 !important;
-      }
-      .stApp input[type="text"]:focus,
-      .stApp input[type="password"]:focus,
-      .stApp textarea:focus {
-        border-color: rgba(214, 41, 118, 0.35) !important;
-        box-shadow: 0 0 0 1px rgba(214, 41, 118, 0.18) !important;
-        outline: none !important;
-      }
-      .stApp input:-webkit-autofill,
-      .stApp input:-webkit-autofill:hover,
-      .stApp input:-webkit-autofill:focus,
-      .stApp textarea:-webkit-autofill {
-        -webkit-text-fill-color: var(--ink) !important;
-        -webkit-box-shadow: 0 0 0 1000px var(--panel-2) inset !important;
-        transition: background-color 9999s ease-in-out 0s;
       }
       div[data-baseweb="input"],
       div[data-baseweb="select"] {
         background: var(--panel-2) !important;
         border: 1px solid var(--border) !important;
         border-radius: 18px !important;
-        min-height: 52px;
+        min-height: 52px !important;
         box-shadow: none !important;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
       }
       div[data-baseweb="select"] > div,
       div[data-baseweb="input"] > div {
         background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
       }
       div[data-baseweb="input"] input,
+      .stApp input[type="text"],
+      .stApp input[type="password"],
+      .stApp textarea {
+        background: transparent !important;
+        color: var(--ink) !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      div[data-baseweb="input"] input::placeholder,
+      .stApp input[type="text"]::placeholder,
+      .stApp input[type="password"]::placeholder,
+      .stApp textarea::placeholder {
+        color: #a9b2c2 !important;
+      }
       div[data-baseweb="select"] input,
       div[data-baseweb="select"] span,
       div[data-baseweb="select"] div,
-      div[data-baseweb="input"] svg,
       div[data-baseweb="select"] svg {
         color: var(--ink) !important;
         fill: var(--ink) !important;
       }
+      div[data-baseweb="input"] svg {
+        color: var(--muted) !important;
+        fill: var(--muted) !important;
+      }
       div[data-baseweb="select"] * {
         color: var(--ink) !important;
-      }
-      div[data-baseweb="input"] input::placeholder,
-      textarea::placeholder {
-        color: #a9b2c2 !important;
       }
       div[data-baseweb="input"]:focus-within,
       div[data-baseweb="select"]:focus-within {
@@ -736,6 +724,10 @@ st.markdown(
         color: var(--ink) !important;
         border: 1px solid var(--border) !important;
         border-radius: 18px !important;
+      }
+      button[title="View fullscreen"],
+      button[aria-label="View fullscreen"] {
+        display: none !important;
       }
       ul[role="listbox"] {
         background: var(--panel-2) !important;
@@ -757,6 +749,9 @@ st.markdown(
       }
       [data-testid="stCaptionContainer"] {
         color: var(--muted) !important;
+      }
+      [data-testid="stSlider"] label {
+        margin-bottom: 0.4rem !important;
       }
       [data-testid="stSliderTickBarMin"],
       [data-testid="stSliderTickBarMax"] {
@@ -886,7 +881,6 @@ with left_col:
         model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
     with row3[1]:
         st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
-    st.caption(t["api_key_help"])
     row4 = st.columns(2)
     with row4[0]:
         generate = st.button(t["generate"], type="primary", use_container_width=True)
