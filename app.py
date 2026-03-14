@@ -845,10 +845,9 @@ left_col, right_col = st.columns([0.98, 1.02], gap="large")
 with left_col:
     st.markdown(
         f"""
-        <div class="panel-shell">
-          <div class="section-eyebrow">Step 1</div>
-          <div class="section-title">{t["step_1"]}</div>
-          <div class="subtle-note">{t["hero_copy"]}</div>
+        <div class="section-eyebrow">Step 1</div>
+        <div class="section-title">{t["step_1"]}</div>
+        <div class="subtle-note">{t["hero_copy"]}</div>
         """,
         unsafe_allow_html=True,
     )
@@ -875,7 +874,6 @@ with left_col:
         generate = st.button(t["generate"], type="primary", use_container_width=True)
     with row4[1]:
         regenerate = st.button(t["regenerate"], use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
 content_type_key = content_labels[content_type_label]
 style_key = style_labels[style_label]
@@ -927,9 +925,8 @@ total_generated = len(flat_hashtags.splitlines()) if flat_hashtags else 0
 with right_col:
     st.markdown(
         f"""
-        <div class="results-shell">
-          <div class="section-eyebrow">Step 2</div>
-          <div class="section-title">{t["step_2"]}</div>
+        <div class="section-eyebrow">Step 2</div>
+        <div class="section-title">{t["step_2"]}</div>
         """,
         unsafe_allow_html=True,
     )
@@ -971,7 +968,6 @@ with right_col:
             """,
             unsafe_allow_html=True,
         )
-    st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="footer-wrap">', unsafe_allow_html=True)
 footer_cols = st.columns([0.34, 0.66])
