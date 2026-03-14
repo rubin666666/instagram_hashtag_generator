@@ -657,7 +657,8 @@ st.markdown(
         background: var(--panel-2);
         color: var(--ink);
         border: 1px solid var(--border);
-        border-radius: 16px;
+        border-radius: 18px;
+        min-height: 52px;
         box-shadow: none !important;
         outline: none !important;
       }
@@ -687,6 +688,21 @@ st.markdown(
       div[data-baseweb="select"] > div {
         background: var(--panel-2);
         color: var(--ink);
+        border-radius: 18px !important;
+        min-height: 52px;
+      }
+      div[data-baseweb="select"] {
+        background: transparent !important;
+        border-radius: 18px !important;
+      }
+      div[data-baseweb="select"] * {
+        box-shadow: none !important;
+      }
+      .language-gate + div div[data-baseweb="select"] > div,
+      .language-gate + div [data-testid="stSelectbox"] > div {
+        background: var(--panel) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 18px !important;
       }
       label, .stMarkdown, .stText, p {
         color: var(--ink);
