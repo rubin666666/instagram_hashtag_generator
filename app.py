@@ -39,6 +39,12 @@ HASHTAG_STYLES = {
     "growth": "Favor discovery and higher reach.",
     "niche": "Favor audience specificity and buyer intent.",
 }
+GOALS = {
+    "reach": "Maximize reach and discovery.",
+    "sales": "Attract buyers and commercial intent.",
+    "authority": "Build expertise and trust.",
+    "community": "Create engagement and loyal audience fit.",
+}
 GROUP_ORDER = ["popular", "medium", "niche", "micro"]
 PLATFORM_GUIDES = {
     "instagram": "Prioritize discoverability, niche relevance, and a natural Instagram mix.",
@@ -67,6 +73,11 @@ UI_TEXT = {
         "step_1": "1. Describe your content",
         "step_2": "2. Get your hashtag pack",
         "platform": "Platform",
+        "goal": "Goal",
+        "goal_hint": "Pick the main outcome you want from this post.",
+        "apply_presets": "Apply platform defaults",
+        "examples_title": "Quick examples",
+        "examples_copy": "Start from a ready-made example, then tweak it for your niche.",
         "topic": "Topic",
         "topic_placeholder": "Example: handmade candles, fitness coach, coffee shop opening",
         "audience": "Target audience",
@@ -82,11 +93,17 @@ UI_TEXT = {
         "regenerate": "Regenerate",
         "enter_topic": "Enter a topic first.",
         "missing_key": "Add your OpenAI API key in the field above or in app secrets.",
+        "topic_too_short": "Make the topic a little more specific.",
         "loading": "Generating hashtags...",
         "request_error": "OpenAI request failed",
         "result_title": "Generated hashtags",
         "result_copy": "Your result is grouped by popularity and niche level so it is easier to use.",
+        "caption_title": "Suggested caption",
+        "caption_copy": "Use it as-is or edit it before posting.",
+        "history_title": "Recent generations",
+        "history_empty": "Your recent hashtag packs will appear here.",
         "copy": "Copy all",
+        "copy_caption": "Copy caption",
         "download": "Download TXT",
         "file_name": "social_media_hashtags.txt",
         "count_card": "Total",
@@ -94,6 +111,7 @@ UI_TEXT = {
         "lang_card": "Language",
         "strategy_card": "Strategy",
         "format_card": "Format",
+        "goal_card": "Goal",
         "platform_instagram": "Instagram",
         "platform_tiktok": "TikTok",
         "platform_youtube": "YouTube",
@@ -114,11 +132,19 @@ UI_TEXT = {
         "style_balanced": "Balanced",
         "style_growth": "Growth",
         "style_niche": "Niche",
+        "goal_reach": "Reach",
+        "goal_sales": "Sales",
+        "goal_authority": "Authority",
+        "goal_community": "Community",
         "tip_1": "Instagram, TikTok, YouTube, LinkedIn, Pinterest, and more",
         "tip_2": "Copy everything with one click",
         "tip_3": "Switch interface and hashtag output between 3 languages",
         "empty_title": "No hashtags yet",
-        "empty_copy": "Fill in the topic and click generate to see the hashtag pack here.",
+        "empty_copy": "Fill in the topic, pick the platform, and click generate to see your caption and hashtag pack here.",
+        "empty_points": "Platform presets, grouped hashtags, ready caption, recent history",
+        "example_1": "Handmade candle launch",
+        "example_2": "Fitness coach short video",
+        "example_3": "Coffee shop opening promo",
     },
     "Українська": {
         "brand": "TagLift AI",
@@ -135,6 +161,11 @@ UI_TEXT = {
         "step_1": "1. Опишіть свій контент",
         "step_2": "2. Отримайте пакет хештегів",
         "platform": "Платформа",
+        "goal": "Ціль",
+        "goal_hint": "Оберіть головний результат, який має дати цей контент.",
+        "apply_presets": "Застосувати пресети платформи",
+        "examples_title": "Швидкі приклади",
+        "examples_copy": "Почніть із готового прикладу, а потім підлаштуйте його під свою нішу.",
         "topic": "Тема",
         "topic_placeholder": "Наприклад: свічки ручної роботи, фітнес-тренер, відкриття кав'ярні",
         "audience": "Цільова аудиторія",
@@ -150,11 +181,17 @@ UI_TEXT = {
         "regenerate": "Згенерувати ще раз",
         "enter_topic": "Спочатку введіть тему.",
         "missing_key": "Додайте OpenAI API ключ у поле вище або в secrets застосунку.",
+        "topic_too_short": "Зробіть тему трохи конкретнішою.",
         "loading": "Генерую хештеги...",
         "request_error": "Помилка запиту до OpenAI",
         "result_title": "Згенеровані хештеги",
         "result_copy": "Результат згрупований за популярністю і нішевістю, щоб ним було простіше користуватись.",
+        "caption_title": "Запропонований підпис",
+        "caption_copy": "Можна використати як є або відредагувати перед публікацією.",
+        "history_title": "Останні генерації",
+        "history_empty": "Тут з'являтимуться ваші останні набори хештегів.",
         "copy": "Скопіювати все",
+        "copy_caption": "Скопіювати підпис",
         "download": "Завантажити TXT",
         "file_name": "social_media_hashtags.txt",
         "count_card": "Усього",
@@ -162,6 +199,7 @@ UI_TEXT = {
         "lang_card": "Мова",
         "strategy_card": "Стратегія",
         "format_card": "Формат",
+        "goal_card": "Ціль",
         "platform_instagram": "Instagram",
         "platform_tiktok": "TikTok",
         "platform_youtube": "YouTube",
@@ -182,11 +220,19 @@ UI_TEXT = {
         "style_balanced": "Баланс",
         "style_growth": "Ріст",
         "style_niche": "Ніша",
+        "goal_reach": "Охоплення",
+        "goal_sales": "Продажі",
+        "goal_authority": "Експертність",
+        "goal_community": "Спільнота",
         "tip_1": "Instagram, TikTok, YouTube, LinkedIn, Pinterest та інші",
         "tip_2": "Копіювання в один клік",
         "tip_3": "Інтерфейс і хештеги трьома мовами",
         "empty_title": "Хештегів ще немає",
-        "empty_copy": "Заповніть тему і натисніть генерацію, щоб побачити тут результат.",
+        "empty_copy": "Заповніть тему, оберіть платформу і натисніть генерацію, щоб побачити тут підпис і набір хештегів.",
+        "empty_points": "Пресети платформ, згруповані хештеги, готовий підпис, історія генерацій",
+        "example_1": "Запуск handmade свічок",
+        "example_2": "Коротке відео фітнес-тренера",
+        "example_3": "Промо відкриття кав'ярні",
     },
     "Русский": {
         "brand": "TagLift AI",
@@ -203,6 +249,11 @@ UI_TEXT = {
         "step_1": "1. Опишите свой контент",
         "step_2": "2. Получите пакет хештегов",
         "platform": "Платформа",
+        "goal": "Цель",
+        "goal_hint": "Выберите главный результат, который должен дать этот контент.",
+        "apply_presets": "Применить пресеты платформы",
+        "examples_title": "Быстрые примеры",
+        "examples_copy": "Начните с готового примера, а потом подстройте его под свою нишу.",
         "topic": "Тема",
         "topic_placeholder": "Например: свечи ручной работы, фитнес-тренер, открытие кофейни",
         "audience": "Целевая аудитория",
@@ -218,11 +269,17 @@ UI_TEXT = {
         "regenerate": "Сгенерировать снова",
         "enter_topic": "Сначала введите тему.",
         "missing_key": "Добавьте OpenAI API ключ в поле выше или в secrets приложения.",
+        "topic_too_short": "Сделайте тему чуть конкретнее.",
         "loading": "Генерирую хештеги...",
         "request_error": "Ошибка запроса к OpenAI",
         "result_title": "Сгенерированные хештеги",
         "result_copy": "Результат сгруппирован по популярности и нишевости, чтобы им было проще пользоваться.",
+        "caption_title": "Предложенный caption",
+        "caption_copy": "Можно использовать как есть или отредактировать перед публикацией.",
+        "history_title": "Последние генерации",
+        "history_empty": "Здесь будут появляться ваши последние наборы хештегов.",
         "copy": "Скопировать все",
+        "copy_caption": "Скопировать caption",
         "download": "Скачать TXT",
         "file_name": "social_media_hashtags.txt",
         "count_card": "Всего",
@@ -230,6 +287,7 @@ UI_TEXT = {
         "lang_card": "Язык",
         "strategy_card": "Стратегия",
         "format_card": "Формат",
+        "goal_card": "Цель",
         "platform_instagram": "Instagram",
         "platform_tiktok": "TikTok",
         "platform_youtube": "YouTube",
@@ -250,11 +308,19 @@ UI_TEXT = {
         "style_balanced": "Баланс",
         "style_growth": "Рост",
         "style_niche": "Ниша",
+        "goal_reach": "Охват",
+        "goal_sales": "Продажи",
+        "goal_authority": "Экспертность",
+        "goal_community": "Комьюнити",
         "tip_1": "Instagram, TikTok, YouTube, LinkedIn, Pinterest и другие",
         "tip_2": "Копирование в один клик",
         "tip_3": "Интерфейс и хештеги на 3 языках",
         "empty_title": "Хештегов пока нет",
-        "empty_copy": "Заполните тему и нажмите генерацию, чтобы увидеть здесь результат.",
+        "empty_copy": "Заполните тему, выберите платформу и нажмите генерацию, чтобы увидеть здесь caption и набор хештегов.",
+        "empty_points": "Пресеты платформ, сгруппированные хештеги, готовый caption, история генераций",
+        "example_1": "Запуск handmade свечей",
+        "example_2": "Короткое видео фитнес-тренера",
+        "example_3": "Промо открытия кофейни",
     },
 }
 
@@ -288,7 +354,29 @@ def compute_group_sizes(total_count: int) -> dict[str, int]:
     return result
 
 
-def build_prompt(platform_key: str, topic: str, content_type_key: str, audience: str, style_key: str, hashtag_language: str, count: int) -> str:
+def platform_defaults(platform_key: str) -> dict[str, object]:
+    defaults = {
+        "instagram": {"content_type": "post", "style": "balanced", "goal": "reach", "count": 25},
+        "tiktok": {"content_type": "short_video", "style": "growth", "goal": "reach", "count": 12},
+        "youtube": {"content_type": "short_video", "style": "niche", "goal": "authority", "count": 15},
+        "linkedin": {"content_type": "post", "style": "niche", "goal": "authority", "count": 8},
+        "pinterest": {"content_type": "carousel", "style": "niche", "goal": "sales", "count": 18},
+        "facebook": {"content_type": "post", "style": "balanced", "goal": "community", "count": 10},
+        "x": {"content_type": "post", "style": "growth", "goal": "reach", "count": 6},
+    }
+    return defaults.get(platform_key, defaults["instagram"])
+
+
+def build_prompt(
+    platform_key: str,
+    topic: str,
+    content_type_key: str,
+    audience: str,
+    style_key: str,
+    goal_key: str,
+    hashtag_language: str,
+    count: int,
+) -> str:
     sizes = compute_group_sizes(count)
     platform_name = PLATFORMS[platform_key]
     return dedent(
@@ -300,13 +388,21 @@ def build_prompt(platform_key: str, topic: str, content_type_key: str, audience:
         Content type: {CONTENT_TYPES[content_type_key]}
         Audience: {audience or "General audience"}
         Strategy: {HASHTAG_STYLES[style_key]}
+        Goal: {GOALS[goal_key]}
         Hashtag language: {hashtag_language}
 
         Return exactly these sections:
+        [CAPTION]
         [POPULAR]
         [MEDIUM]
         [NICHE]
         [MICRO]
+
+        Caption rules:
+        - write 2 to 4 short lines
+        - match the chosen platform voice
+        - include a soft call to action
+        - do not include hashtags inside the caption
 
         Section sizes:
         [POPULAR]: {sizes["popular"]}
@@ -323,21 +419,28 @@ def build_prompt(platform_key: str, topic: str, content_type_key: str, audience:
     ).strip()
 
 
-def parse_response(raw_text: str, total_count: int) -> dict[str, list[str]]:
+def parse_response(raw_text: str, total_count: int) -> tuple[str, dict[str, list[str]]]:
     sections = {key: [] for key in GROUP_ORDER}
     mapping = {"[POPULAR]": "popular", "[MEDIUM]": "medium", "[NICHE]": "niche", "[MICRO]": "micro"}
     current = None
+    caption_lines = []
     for line in raw_text.splitlines():
         value = line.strip()
         if not value:
             continue
+        if value == "[CAPTION]":
+            current = "caption"
+            continue
         if value in mapping:
             current = mapping[value]
+            continue
+        if current == "caption":
+            caption_lines.append(value)
             continue
         if current and value.startswith("#"):
             sections[current].append(value)
     if any(sections.values()):
-        return sections
+        return "\n".join(caption_lines).strip(), sections
     hashtags = [line.strip() for line in raw_text.splitlines() if line.strip().startswith("#")]
     sizes = compute_group_sizes(total_count)
     start = 0
@@ -345,7 +448,8 @@ def parse_response(raw_text: str, total_count: int) -> dict[str, list[str]]:
         end = start + sizes[key]
         sections[key] = hashtags[start:end]
         start = end
-    return sections
+    caption = "\n".join(line.strip() for line in raw_text.splitlines() if line.strip() and not line.strip().startswith("#"))
+    return caption.strip(), sections
 
 
 def flatten_sections(sections: dict[str, list[str]]) -> str:
@@ -358,6 +462,10 @@ def localize_content_type(key: str, t: dict[str, str]) -> str:
 
 def localize_platform(key: str, t: dict[str, str]) -> str:
     return t[f"platform_{key}"]
+
+
+def localize_goal(key: str, t: dict[str, str]) -> str:
+    return t[f"goal_{key}"]
 
 
 def localize_style(key: str, t: dict[str, str]) -> str:
@@ -375,6 +483,12 @@ def render_metric(label: str, value: str) -> str:
 def render_group_card(title: str, tags: list[str]) -> str:
     chips = "".join(f'<span class="tag-chip">{tag}</span>' for tag in tags)
     return f'<div class="group-card"><div class="group-title">{title}</div><div class="tag-wrap">{chips}</div></div>'
+
+
+def push_history_item(item: dict[str, str]) -> None:
+    history = st.session_state.get("generation_history", [])
+    history = [item] + [entry for entry in history if entry != item]
+    st.session_state["generation_history"] = history[:6]
 
 
 def copy_button(text: str, button_label: str) -> None:
@@ -643,6 +757,29 @@ st.markdown(
       .empty-copy, .result-copy {
         color:var(--muted);
       }
+      .examples-wrap {
+        margin-bottom: 1rem;
+      }
+      .history-list {
+        display:grid;
+        gap:0.7rem;
+        margin-top:0.85rem;
+      }
+      .history-item {
+        background:var(--panel-2);
+        border:1px solid var(--border);
+        border-radius:16px;
+        padding:0.85rem 0.95rem;
+      }
+      .history-item strong {
+        color:var(--ink);
+        display:block;
+        margin-bottom:0.2rem;
+      }
+      .history-item span {
+        color:var(--muted);
+        font-size:0.88rem;
+      }
       .language-gate {
         max-width: 520px;
         margin: 10vh auto 0;
@@ -718,6 +855,12 @@ st.markdown(
         color: var(--muted);
         font-size: 0.92rem;
         margin-bottom: 1rem;
+      }
+      .tiny-note {
+        color: var(--muted);
+        font-size: 0.82rem;
+        margin-top: -0.15rem;
+        margin-bottom: 0.65rem;
       }
       div[data-testid="stTextInput"],
       div[data-testid="stSelectbox"],
@@ -836,9 +979,22 @@ if "language_gate_choice" not in st.session_state:
 
 app_language = st.session_state.get("app_language", APP_LANGUAGES[0])
 t = UI_TEXT[app_language]
-platform_labels = {localize_platform(key, t): key for key in PLATFORMS}
-content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+if "platform_key" not in st.session_state:
+    st.session_state["platform_key"] = "instagram"
+if "content_type_key" not in st.session_state:
+    st.session_state["content_type_key"] = "post"
+if "style_key" not in st.session_state:
+    st.session_state["style_key"] = "balanced"
+if "goal_key" not in st.session_state:
+    st.session_state["goal_key"] = "reach"
+if "hashtag_language" not in st.session_state:
+    st.session_state["hashtag_language"] = HASHTAG_LANGUAGES[0]
+if "count_value" not in st.session_state:
+    st.session_state["count_value"] = 25
+if "model_name" not in st.session_state:
+    st.session_state["model_name"] = "gpt-4.1-mini"
+if "generation_history" not in st.session_state:
+    st.session_state["generation_history"] = []
 
 if not st.session_state["language_confirmed"]:
     gate_lang = st.session_state.get("language_gate_choice", app_language)
@@ -909,6 +1065,45 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+example_configs = [
+    {
+        "label": t["example_1"],
+        "platform": "instagram",
+        "content_type": "post",
+        "style": "balanced",
+        "goal": "sales",
+        "topic": "handmade soy candle launch with cozy home decor vibe",
+        "audience": "gift shoppers, home decor lovers, women 24-40",
+    },
+    {
+        "label": t["example_2"],
+        "platform": "tiktok",
+        "content_type": "short_video",
+        "style": "growth",
+        "goal": "reach",
+        "topic": "fitness coach quick morning mobility routine",
+        "audience": "busy professionals, beginner fitness audience",
+    },
+    {
+        "label": t["example_3"],
+        "platform": "facebook",
+        "content_type": "product_promo",
+        "style": "balanced",
+        "goal": "community",
+        "topic": "grand opening promotion for a neighborhood coffee shop",
+        "audience": "local residents, remote workers, coffee lovers",
+    },
+]
+
+platform_key = st.session_state["platform_key"]
+defaults = platform_defaults(platform_key)
+if st.session_state.get("last_preset_platform") != platform_key:
+    st.session_state["content_type_key"] = defaults["content_type"]
+    st.session_state["style_key"] = defaults["style"]
+    st.session_state["goal_key"] = defaults["goal"]
+    st.session_state["count_value"] = defaults["count"]
+    st.session_state["last_preset_platform"] = platform_key
+
 left_col, right_col = st.columns([0.98, 1.02], gap="large")
 
 with left_col:
@@ -920,37 +1115,86 @@ with left_col:
         """,
         unsafe_allow_html=True,
     )
-    topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
-    audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
+    st.markdown(
+        f"""
+        <div class="examples-wrap">
+          <div class="section-title" style="font-size:1rem; margin-bottom:0.1rem;">{t["examples_title"]}</div>
+          <div class="tiny-note">{t["examples_copy"]}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    example_cols = st.columns(3)
+    for idx, example in enumerate(example_configs):
+        with example_cols[idx]:
+            if st.button(example["label"], key=f"example_{idx}", use_container_width=True):
+                st.session_state["platform_key"] = example["platform"]
+                st.session_state["content_type_key"] = example["content_type"]
+                st.session_state["style_key"] = example["style"]
+                st.session_state["goal_key"] = example["goal"]
+                st.session_state["topic_input"] = example["topic"]
+                st.session_state["audience_input"] = example["audience"]
+                st.session_state["count_value"] = platform_defaults(example["platform"])["count"]
+                st.session_state["last_preset_platform"] = example["platform"]
+                st.rerun()
+
+    topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"], key="topic_input")
+    audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"], key="audience_input")
     row1 = st.columns(2)
     with row1[0]:
-        platform_label = st.selectbox(t["platform"], list(platform_labels.keys()))
+        platform_key = st.selectbox(
+            t["platform"],
+            list(PLATFORMS.keys()),
+            format_func=lambda key: localize_platform(key, t),
+            key="platform_key",
+        )
     with row1[1]:
-        content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
+        content_type_key = st.selectbox(
+            t["content_type"],
+            list(CONTENT_TYPES.keys()),
+            format_func=lambda key: localize_content_type(key, t),
+            key="content_type_key",
+        )
     row2 = st.columns(2)
     with row2[0]:
-        style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
+        style_key = st.selectbox(
+            t["strategy"],
+            list(HASHTAG_STYLES.keys()),
+            format_func=lambda key: localize_style(key, t),
+            key="style_key",
+        )
     with row2[1]:
-        hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
+        goal_key = st.selectbox(
+            t["goal"],
+            list(GOALS.keys()),
+            format_func=lambda key: localize_goal(key, t),
+            key="goal_key",
+        )
+        st.markdown(f'<div class="tiny-note">{t["goal_hint"]}</div>', unsafe_allow_html=True)
     row3 = st.columns(2)
     with row3[0]:
-        count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
+        hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, key="hashtag_language")
     with row3[1]:
-        model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
+        count = st.slider(t["count"], min_value=5, max_value=40, step=1, key="count_value")
     row4 = st.columns(2)
     with row4[0]:
-        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
+        model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], key="model_name")
     with row4[1]:
-        st.caption(t["api_key_help"])
+        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
     row5 = st.columns(2)
     with row5[0]:
         generate = st.button(t["generate"], type="primary", use_container_width=True)
     with row5[1]:
         regenerate = st.button(t["regenerate"], use_container_width=True)
+    if st.button(t["apply_presets"], use_container_width=True):
+        defaults = platform_defaults(platform_key)
+        st.session_state["content_type_key"] = defaults["content_type"]
+        st.session_state["style_key"] = defaults["style"]
+        st.session_state["goal_key"] = defaults["goal"]
+        st.session_state["count_value"] = defaults["count"]
+        st.session_state["last_preset_platform"] = platform_key
+        st.rerun()
 
-platform_key = platform_labels[platform_label]
-content_type_key = content_labels[content_type_label]
-style_key = style_labels[style_label]
 should_generate = generate or (regenerate and bool(st.session_state.get("last_topic")))
 
 if should_generate:
@@ -958,6 +1202,8 @@ if should_generate:
     active_audience = audience.strip() or st.session_state.get("last_audience", "")
     if not active_topic:
         st.warning(t["enter_topic"])
+    elif len(active_topic) < 4:
+        st.warning(t["topic_too_short"])
     else:
         client = get_client()
         if client is None:
@@ -968,6 +1214,7 @@ if should_generate:
             st.session_state["last_platform"] = platform_key
             st.session_state["last_content_type"] = content_type_key
             st.session_state["last_style"] = style_key
+            st.session_state["last_goal"] = goal_key
             st.session_state["last_language"] = hashtag_language
             st.session_state["last_count"] = count
             try:
@@ -980,22 +1227,35 @@ if should_generate:
                             content_type_key=content_type_key,
                             audience=active_audience,
                             style_key=style_key,
+                            goal_key=goal_key,
                             hashtag_language=hashtag_language,
                             count=count,
                         ),
                     )
                 raw_text = response.output_text.strip()
-                sections = parse_response(raw_text, count)
+                caption_text, sections = parse_response(raw_text, count)
+                flat_hashtags = flatten_sections(sections)
+                st.session_state["caption_text"] = caption_text
                 st.session_state["hashtags_sections"] = sections
-                st.session_state["hashtags_flat"] = flatten_sections(sections)
+                st.session_state["hashtags_flat"] = flat_hashtags
+                push_history_item(
+                    {
+                        "topic": active_topic,
+                        "platform": localize_platform(platform_key, t),
+                        "goal": localize_goal(goal_key, t),
+                    }
+                )
             except Exception as exc:
                 st.error(f'{t["request_error"]}: {exc}')
 
 sections = st.session_state.get("hashtags_sections")
+caption_text = st.session_state.get("caption_text", "")
 flat_hashtags = st.session_state.get("hashtags_flat", "")
+history = st.session_state.get("generation_history", [])
 last_platform = st.session_state.get("last_platform", platform_key)
 last_language = st.session_state.get("last_language", hashtag_language)
 last_content_type = st.session_state.get("last_content_type", content_type_key)
+last_goal = st.session_state.get("last_goal", goal_key)
 total_generated = len(flat_hashtags.splitlines()) if flat_hashtags else 0
 
 with right_col:
@@ -1014,19 +1274,33 @@ with right_col:
             <div class="metric-grid">
               {render_metric(t["count_card"], str(total_generated))}
               {render_metric(t["platform_card"], localize_platform(last_platform, t))}
-              {render_metric(t["lang_card"], last_language)}
+              {render_metric(t["goal_card"], localize_goal(last_goal, t))}
               {render_metric(t["format_card"], localize_content_type(last_content_type, t))}
             </div>
             """,
             unsafe_allow_html=True,
         )
+        st.markdown(
+            f"""
+            <div class="section-title" style="font-size:1rem; margin-top:0.2rem; margin-bottom:0.15rem;">{t["caption_title"]}</div>
+            <div class="result-copy">{t["caption_copy"]}</div>
+            """,
+            unsafe_allow_html=True,
+        )
+        caption_cols = st.columns([0.42, 0.58])
+        with caption_cols[0]:
+            copy_button(caption_text, t["copy_caption"])
+        with caption_cols[1]:
+            st.caption(f'{t["lang_card"]}: {last_language}')
+        st.text_area(t["caption_title"], caption_text, height=120, key="caption_result", label_visibility="collapsed")
+
         action_cols = st.columns([0.42, 0.58])
         with action_cols[0]:
             copy_button(flat_hashtags, t["copy"])
         with action_cols[1]:
             st.download_button(
                 t["download"],
-                data=flat_hashtags,
+                data=f"{caption_text}\n\n{flat_hashtags}".strip(),
                 file_name=t["file_name"],
                 mime="text/plain",
                 use_container_width=True,
@@ -1040,10 +1314,25 @@ with right_col:
             <div class="empty-state">
               <div class="empty-title">{t["empty_title"]}</div>
               <div class="empty-copy">{t["empty_copy"]}</div>
+              <div class="tiny-note" style="margin-top:0.8rem;">{t["empty_points"]}</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
+
+    st.markdown(
+        f"""
+        <div class="section-title" style="font-size:1rem; margin-top:1rem; margin-bottom:0.15rem;">{t["history_title"]}</div>
+        <div class="result-copy">{t["history_empty"] if not history else ""}</div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if history:
+        history_html = "".join(
+            f'<div class="history-item"><strong>{item["topic"]}</strong><span>{item["platform"]} · {item["goal"]}</span></div>'
+            for item in history
+        )
+        st.markdown(f'<div class="history-list">{history_html}</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="footer-wrap">', unsafe_allow_html=True)
 footer_cols = st.columns([0.34, 0.66])

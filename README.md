@@ -10,6 +10,9 @@ Built for creators, small businesses, personal brands, coaches, and online shops
 - supports 3 interface languages: English, Ukrainian, Russian
 - supports 3 hashtag output languages: English, Ukrainian, Russian
 - works for posts, short videos, stories, carousels, product promos, and personal brand content
+- includes platform presets and goal-based generation
+- creates both a short caption and a grouped hashtag pack
+- stores recent generations inside the app session
 - groups results into popular, medium, niche, and micro-niche hashtags
 - lets users copy the final set or download it as `.txt`
 
