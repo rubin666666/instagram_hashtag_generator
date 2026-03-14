@@ -708,36 +708,36 @@ with left_col:
         """,
         unsafe_allow_html=True,
     )
-        topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
-        audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
-        row1 = st.columns(2)
-        with row1[0]:
-            content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
-        with row1[1]:
-            style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
-        row2 = st.columns(2)
-        with row2[0]:
-            hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
-        with row2[1]:
-            count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
-        row3 = st.columns(2)
-        with row3[0]:
-            model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
-        with row3[1]:
-            app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
-            t = UI_TEXT[app_language]
-            content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-            style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
-        row4 = st.columns(2)
-        with row4[0]:
-            st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
-        with row4[1]:
-            st.caption(t["api_key_help"])
-        row5 = st.columns(2)
-        with row5[0]:
-            generate = st.button(t["generate"], type="primary", use_container_width=True)
-        with row5[1]:
-            regenerate = st.button(t["regenerate"], use_container_width=True)
+    topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
+    audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
+    row1 = st.columns(2)
+    with row1[0]:
+        content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
+    with row1[1]:
+        style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
+    row2 = st.columns(2)
+    with row2[0]:
+        hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
+    with row2[1]:
+        count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
+    row3 = st.columns(2)
+    with row3[0]:
+        model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
+    with row3[1]:
+        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
+        t = UI_TEXT[app_language]
+        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+    row4 = st.columns(2)
+    with row4[0]:
+        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
+    with row4[1]:
+        st.caption(t["api_key_help"])
+    row5 = st.columns(2)
+    with row5[0]:
+        generate = st.button(t["generate"], type="primary", use_container_width=True)
+    with row5[1]:
+        regenerate = st.button(t["regenerate"], use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 content_type_key = content_labels[content_type_label]
