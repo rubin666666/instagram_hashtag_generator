@@ -669,6 +669,35 @@ st.markdown(
       div[data-testid="stTextArea"] {
         width: 100%;
       }
+      .stApp input[type="text"],
+      .stApp input[type="password"],
+      .stApp textarea {
+        background: var(--panel-2) !important;
+        color: var(--ink) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 18px !important;
+        box-shadow: none !important;
+      }
+      .stApp input[type="text"]::placeholder,
+      .stApp input[type="password"]::placeholder,
+      .stApp textarea::placeholder {
+        color: #8d95a3 !important;
+      }
+      .stApp input[type="text"]:focus,
+      .stApp input[type="password"]:focus,
+      .stApp textarea:focus {
+        border-color: rgba(214, 41, 118, 0.35) !important;
+        box-shadow: 0 0 0 1px rgba(214, 41, 118, 0.18) !important;
+        outline: none !important;
+      }
+      .stApp input:-webkit-autofill,
+      .stApp input:-webkit-autofill:hover,
+      .stApp input:-webkit-autofill:focus,
+      .stApp textarea:-webkit-autofill {
+        -webkit-text-fill-color: var(--ink) !important;
+        -webkit-box-shadow: 0 0 0 1000px var(--panel-2) inset !important;
+        transition: background-color 9999s ease-in-out 0s;
+      }
       div[data-baseweb="input"],
       div[data-baseweb="select"] {
         background: var(--panel-2) !important;
@@ -676,6 +705,10 @@ st.markdown(
         border-radius: 18px !important;
         min-height: 52px;
         box-shadow: none !important;
+      }
+      div[data-baseweb="select"] > div,
+      div[data-baseweb="input"] > div {
+        background: transparent !important;
       }
       div[data-baseweb="input"] input,
       div[data-baseweb="select"] input,
