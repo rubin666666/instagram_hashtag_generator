@@ -664,46 +664,39 @@ st.markdown(
         font-size: 0.92rem;
         margin-bottom: 1rem;
       }
-      div[data-testid="stTextInput"] input,
-      div[data-testid="stSelectbox"] > div,
-      div[data-testid="stTextArea"] textarea {
-        background: var(--panel-2);
-        color: var(--ink);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        min-height: 52px;
-        box-shadow: none !important;
-        outline: none !important;
+      div[data-testid="stTextInput"],
+      div[data-testid="stSelectbox"],
+      div[data-testid="stTextArea"] {
+        width: 100%;
       }
-      div[data-testid="stTextInput"] > div,
-      div[data-testid="stTextInput"] > div > div,
-      div[data-testid="stTextArea"] > div,
-      div[data-testid="stTextArea"] > div > div,
-      div[data-testid="stSelectbox"] > div,
-      div[data-baseweb="select"],
-      div[data-baseweb="input"] {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        outline: none !important;
-      }
-      div[data-testid="stTextInput"] input:focus,
-      div[data-testid="stTextArea"] textarea:focus,
-      div[data-baseweb="input"] input:focus {
-        border: 1px solid rgba(214, 41, 118, 0.35) !important;
-        box-shadow: 0 0 0 1px rgba(214, 41, 118, 0.18) !important;
-        outline: none !important;
-      }
-      div[data-testid="stTextInput"] input::placeholder,
-      textarea::placeholder {
-        color: #8d95a3;
-      }
-      div[data-baseweb="select"] > div {
-        background: var(--panel-2);
-        color: var(--ink);
+      div[data-baseweb="input"],
+      div[data-baseweb="select"] {
+        background: var(--panel-2) !important;
+        border: 1px solid var(--border) !important;
         border-radius: 18px !important;
         min-height: 52px;
+        box-shadow: none !important;
+      }
+      div[data-baseweb="input"] input,
+      div[data-baseweb="select"] input,
+      div[data-baseweb="input"] svg,
+      div[data-baseweb="select"] svg {
+        color: var(--ink) !important;
+      }
+      div[data-baseweb="input"] input::placeholder,
+      textarea::placeholder {
+        color: #8d95a3 !important;
+      }
+      div[data-baseweb="input"]:focus-within,
+      div[data-baseweb="select"]:focus-within {
+        border-color: rgba(214, 41, 118, 0.35) !important;
+        box-shadow: 0 0 0 1px rgba(214, 41, 118, 0.18) !important;
+      }
+      textarea {
+        background: var(--panel-2) !important;
+        color: var(--ink) !important;
         border: 1px solid var(--border) !important;
+        border-radius: 18px !important;
       }
       ul[role="listbox"] {
         background: var(--panel-2) !important;
@@ -719,23 +712,6 @@ st.markdown(
       ul[role="listbox"] li[aria-selected="true"] {
         background: rgba(214,41,118,0.14) !important;
         color: var(--ink) !important;
-      }
-      div[data-baseweb="select"] {
-        background: transparent !important;
-        border-radius: 18px !important;
-      }
-      div[data-baseweb="select"] * {
-        box-shadow: none !important;
-        background-image: none !important;
-      }
-      .language-gate + div div[data-baseweb="select"] > div,
-      .language-gate + div [data-testid="stSelectbox"] > div {
-        background: var(--panel) !important;
-        border: 1px solid var(--border) !important;
-        border-radius: 18px !important;
-      }
-      svg, path {
-        background: transparent !important;
       }
       label, .stMarkdown, .stText, p {
         color: var(--ink);
