@@ -553,6 +553,27 @@ st.markdown(
         color: var(--ink);
         border: 1px solid var(--border);
         border-radius: 16px;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+      div[data-testid="stTextInput"] > div,
+      div[data-testid="stTextInput"] > div > div,
+      div[data-testid="stTextArea"] > div,
+      div[data-testid="stTextArea"] > div > div,
+      div[data-testid="stSelectbox"] > div,
+      div[data-baseweb="select"],
+      div[data-baseweb="input"] {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+      div[data-testid="stTextInput"] input:focus,
+      div[data-testid="stTextArea"] textarea:focus,
+      div[data-baseweb="input"] input:focus {
+        border: 1px solid rgba(214, 41, 118, 0.35) !important;
+        box-shadow: 0 0 0 1px rgba(214, 41, 118, 0.18) !important;
+        outline: none !important;
       }
       div[data-testid="stTextInput"] input::placeholder,
       textarea::placeholder {
