@@ -335,28 +335,37 @@ st.markdown(
         --ig-orange: #f77737;
         --ig-yellow: #fcaf45;
         --ig-red: #fd1d1d;
-        --ink: #111827;
-        --muted: #6b7280;
-        --panel: rgba(255,255,255,0.92);
-        --border: rgba(17,24,39,0.08);
+        --bg: #16181d;
+        --bg-soft: #1e2128;
+        --panel: #20242c;
+        --panel-2: #262b34;
+        --ink: #f3f4f6;
+        --muted: #aeb6c2;
+        --border: rgba(255,255,255,0.08);
       }
       .stApp {
         background:
-          radial-gradient(circle at top left, rgba(214,41,118,0.10), transparent 24%),
-          radial-gradient(circle at top right, rgba(150,47,191,0.10), transparent 24%),
+          radial-gradient(circle at top left, rgba(214,41,118,0.13), transparent 24%),
+          radial-gradient(circle at top right, rgba(150,47,191,0.12), transparent 24%),
           radial-gradient(circle at bottom left, rgba(252,175,69,0.10), transparent 22%),
-          linear-gradient(180deg, #fff 0%, #fff8fb 100%);
+          linear-gradient(180deg, #111318 0%, #16181d 100%);
       }
       .block-container {
         max-width: 1140px;
-        padding-top: 1.25rem;
+        padding-top: 2.4rem;
         padding-bottom: 2rem;
+      }
+      .stApp header {
+        background: transparent;
+      }
+      .stApp [data-testid="stHeader"] {
+        background: transparent;
       }
       .topbar, .hero-card, .panel, .result-panel {
         background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 26px;
-        box-shadow: 0 18px 48px rgba(17,24,39,0.06);
+        box-shadow: 0 18px 48px rgba(0,0,0,0.28);
       }
       .topbar {
         padding: 0.9rem 1rem;
@@ -400,8 +409,8 @@ st.markdown(
         display:inline-block;
         padding:0.42rem 0.78rem;
         border-radius:999px;
-        background:#fff0f6;
-        color:#be185d;
+        background:rgba(214,41,118,0.12);
+        color:#ff78b0;
         font-size:0.76rem;
         font-weight:800;
         text-transform:uppercase;
@@ -433,11 +442,11 @@ st.markdown(
         gap:0.7rem;
       }
       .tip {
-        background:#fff;
+        background:var(--panel-2);
         border:1px solid var(--border);
         border-radius:18px;
         padding:0.9rem 1rem;
-        color:var(--ink);
+        color:#f9fafb;
         font-weight:700;
       }
       .panel, .result-panel {
@@ -458,7 +467,7 @@ st.markdown(
         margin:0.95rem 0;
       }
       .metric-card {
-        background:#fff;
+        background:var(--panel-2);
         border:1px solid var(--border);
         border-radius:18px;
         padding:0.9rem;
@@ -476,7 +485,7 @@ st.markdown(
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
       .group-card {
-        background:#fff;
+        background:var(--panel-2);
         border:1px solid var(--border);
         border-radius:18px;
         padding:1rem;
@@ -497,13 +506,13 @@ st.markdown(
         border-radius:999px;
         padding:0.48rem 0.72rem;
         font-size:0.88rem;
-        color:#831843;
-        background:#fff1f7;
-        border:1px solid rgba(214,41,118,0.12);
+        color:#ffd6e8;
+        background:rgba(214,41,118,0.14);
+        border:1px solid rgba(214,41,118,0.22);
       }
       .empty-state {
-        background:#fff;
-        border:1px dashed rgba(17,24,39,0.12);
+        background:var(--panel-2);
+        border:1px dashed rgba(255,255,255,0.14);
         border-radius:18px;
         padding:1.6rem 1rem;
         text-align:center;
@@ -529,13 +538,36 @@ st.markdown(
       }
       .stButton > button:not([kind="primary"]) {
         color:var(--ink);
-        background:#fff;
+        background:var(--panel-2);
         border:1px solid var(--border);
       }
       .stDownloadButton > button {
         color:var(--ink);
-        background:#fff;
+        background:var(--panel-2);
         border:1px solid var(--border);
+      }
+      div[data-testid="stTextInput"] input,
+      div[data-testid="stSelectbox"] > div,
+      div[data-testid="stTextArea"] textarea {
+        background: var(--panel-2);
+        color: var(--ink);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+      }
+      div[data-testid="stTextInput"] input::placeholder,
+      textarea::placeholder {
+        color: #8d95a3;
+      }
+      div[data-baseweb="select"] > div {
+        background: var(--panel-2);
+        color: var(--ink);
+      }
+      label, .stMarkdown, .stText, p {
+        color: var(--ink);
+      }
+      [data-testid="stSliderTickBarMin"],
+      [data-testid="stSliderTickBarMax"] {
+        background: rgba(255,255,255,0.12);
       }
       @media (max-width: 900px) {
         .hero-grid, .metric-grid, .group-grid {
