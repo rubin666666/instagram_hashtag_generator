@@ -601,13 +601,12 @@ st.markdown(
 )
 
 
-app_language = st.selectbox("Language / Мова / Язык", APP_LANGUAGES, index=0, label_visibility="collapsed")
-t = UI_TEXT[app_language]
-content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
-
 top_left, top_right = st.columns([0.72, 0.28])
 with top_left:
+    app_language = st.session_state.get("top_language", APP_LANGUAGES[0])
+    t = UI_TEXT[app_language]
+    content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+    style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
     st.markdown(
         f"""
         <div class="topbar">
