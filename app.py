@@ -708,12 +708,6 @@ with left_col:
         """,
         unsafe_allow_html=True,
     )
-    lang_col, lang_spacer = st.columns([0.48, 0.52])
-    with lang_col:
-        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
-        t = UI_TEXT[app_language]
-        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
     topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
     audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
     row1 = st.columns(2)
@@ -732,6 +726,14 @@ with left_col:
     with row3[1]:
         st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
     st.caption(t["api_key_help"])
+    lang_row = st.columns([0.48, 0.52])
+    with lang_row[0]:
+        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
+        t = UI_TEXT[app_language]
+        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+    with lang_row[1]:
+        st.empty()
     row4 = st.columns(2)
     with row4[0]:
         generate = st.button(t["generate"], type="primary", use_container_width=True)
