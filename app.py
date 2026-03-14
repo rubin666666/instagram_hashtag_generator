@@ -696,6 +696,21 @@ st.markdown(
         min-height: 52px;
         border: 1px solid var(--border) !important;
       }
+      ul[role="listbox"] {
+        background: var(--panel-2) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 18px 48px rgba(0,0,0,0.32) !important;
+      }
+      ul[role="listbox"] li {
+        background: transparent !important;
+        color: var(--ink) !important;
+      }
+      ul[role="listbox"] li:hover,
+      ul[role="listbox"] li[aria-selected="true"] {
+        background: rgba(214,41,118,0.14) !important;
+        color: var(--ink) !important;
+      }
       div[data-baseweb="select"] {
         background: transparent !important;
         border-radius: 18px !important;
