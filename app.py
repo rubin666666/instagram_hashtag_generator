@@ -986,12 +986,14 @@ footer_cols = st.columns([0.34, 0.66])
 with footer_cols[0]:
     st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
 with footer_cols[1]:
-    new_language = st.selectbox(
-        t["footer_language"],
-        APP_LANGUAGES,
-        index=APP_LANGUAGES.index(app_language),
-        key="footer_language_select",
-    )
+    footer_select_col, _ = st.columns([0.42, 0.58])
+    with footer_select_col:
+        new_language = st.selectbox(
+            t["footer_language"],
+            APP_LANGUAGES,
+            index=APP_LANGUAGES.index(app_language),
+            key="footer_language_select",
+        )
 if new_language != app_language:
     st.session_state["app_language"] = new_language
     st.rerun()
