@@ -625,18 +625,10 @@ st.markdown(
         box-shadow: 0 0 0 1px rgba(214,41,118,0.18);
         background: linear-gradient(135deg, rgba(253,29,29,0.12) 0%, rgba(214,41,118,0.10) 100%);
       }
-      .footer-bar {
+      .footer-wrap {
         margin-top: 1.2rem;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 1rem;
-      }
-      .footer-grid {
-        display:grid;
-        grid-template-columns: 0.34fr 0.66fr;
-        gap: 1rem;
-        align-items:end;
+        padding-top: 0.6rem;
+        border-top: 1px solid rgba(255,255,255,0.06);
       }
       .footer-title {
         color: var(--ink);
@@ -754,9 +746,6 @@ st.markdown(
       }
       @media (max-width: 900px) {
         .hero-grid, .metric-grid, .group-grid {
-          grid-template-columns:1fr;
-        }
-        .footer-grid {
           grid-template-columns:1fr;
         }
         .brand-subtitle {
@@ -984,7 +973,7 @@ with right_col:
         )
     st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="footer-bar">', unsafe_allow_html=True)
+st.markdown('<div class="footer-wrap">', unsafe_allow_html=True)
 footer_cols = st.columns([0.34, 0.66])
 with footer_cols[0]:
     st.markdown(f'<div class="footer-title">{t["footer_title"]}</div><div class="footer-copy">{t["footer_copy"]}</div>', unsafe_allow_html=True)
