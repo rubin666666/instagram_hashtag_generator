@@ -604,6 +604,10 @@ st.markdown(
         margin: 0 auto 0.9rem;
         line-height: 1.6;
       }
+      .gate-controls {
+        max-width: 520px;
+        margin: 0.9rem auto 0;
+      }
       .footer-bar {
         margin-top: 1.2rem;
         background: rgba(255,255,255,0.03);
@@ -690,6 +694,7 @@ st.markdown(
         color: var(--ink);
         border-radius: 18px !important;
         min-height: 52px;
+        border: 1px solid var(--border) !important;
       }
       div[data-baseweb="select"] {
         background: transparent !important;
@@ -697,12 +702,16 @@ st.markdown(
       }
       div[data-baseweb="select"] * {
         box-shadow: none !important;
+        background-image: none !important;
       }
       .language-gate + div div[data-baseweb="select"] > div,
       .language-gate + div [data-testid="stSelectbox"] > div {
         background: var(--panel) !important;
         border: 1px solid var(--border) !important;
         border-radius: 18px !important;
+      }
+      svg, path {
+        background: transparent !important;
       }
       label, .stMarkdown, .stText, p {
         color: var(--ink);
@@ -753,6 +762,7 @@ if not st.session_state["language_confirmed"]:
             """,
             unsafe_allow_html=True,
         )
+        st.markdown('<div class="gate-controls">', unsafe_allow_html=True)
         gate_lang = st.selectbox(
             "Language / Мова / Язык",
             APP_LANGUAGES,
@@ -765,6 +775,7 @@ if not st.session_state["language_confirmed"]:
             st.session_state["app_language"] = gate_lang
             st.session_state["language_confirmed"] = True
             st.rerun()
+        st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
 st.markdown(
