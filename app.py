@@ -404,14 +404,14 @@ st.markdown(
         justify-content:center;
         color:#fff;
         font-weight:900;
-        font-size:1rem;
+        font-size:0.92rem;
         letter-spacing:0.06em;
         background: linear-gradient(135deg, #fd1d1d 0%, #d62976 38%, #962fbf 70%, #f77737 100%);
         box-shadow: 0 10px 24px rgba(214,41,118,0.26);
       }
       .brand-name {
         color: var(--ink);
-        font-size: 1.08rem;
+        font-size: 1.18rem;
         font-weight: 900;
         letter-spacing: 0.04em;
         text-transform: uppercase;
@@ -428,7 +428,7 @@ st.markdown(
       }
       .brand-tagline {
         color:#ff93bf;
-        font-size:0.78rem;
+        font-size:0.72rem;
         font-weight:800;
         letter-spacing:0.05em;
         text-transform:uppercase;
@@ -482,13 +482,17 @@ st.markdown(
         font-weight:700;
       }
       .panel-head, .result-head, .result-panel {
-        padding:1.05rem 1.15rem;
+        padding:0.95rem 1.05rem;
+      }
+      .panel-head, .result-head {
+        margin-bottom: 0.8rem;
+        border-radius: 20px;
       }
       .section-title {
         color:var(--ink);
         font-size:1.12rem;
         font-weight:800;
-        margin-bottom:0.85rem;
+        margin-bottom:0.35rem;
       }
       .metric-grid, .group-grid {
         display:grid;
@@ -581,7 +585,13 @@ st.markdown(
       .subtle-note {
         color: var(--muted);
         font-size: 0.88rem;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0;
+      }
+      .form-shell, .results-shell {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1rem;
       }
       div[data-testid="stTextInput"] input,
       div[data-testid="stSelectbox"] > div,
@@ -696,36 +706,39 @@ with left_col:
         """,
         unsafe_allow_html=True,
     )
-    topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
-    audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
-    row1 = st.columns(2)
-    with row1[0]:
-        content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
-    with row1[1]:
-        style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
-    row2 = st.columns(2)
-    with row2[0]:
-        hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
-    with row2[1]:
-        count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
-    row3 = st.columns(2)
-    with row3[0]:
-        model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
-    with row3[1]:
-        app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
-        t = UI_TEXT[app_language]
-        content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
-        style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
-    row4 = st.columns(2)
-    with row4[0]:
-        st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
-    with row4[1]:
-        st.caption(t["api_key_help"])
-    row5 = st.columns(2)
-    with row5[0]:
-        generate = st.button(t["generate"], type="primary", use_container_width=True)
-    with row5[1]:
-        regenerate = st.button(t["regenerate"], use_container_width=True)
+    with st.container():
+        st.markdown('<div class="form-shell">', unsafe_allow_html=True)
+        topic = st.text_input(t["topic"], placeholder=t["topic_placeholder"])
+        audience = st.text_input(t["audience"], placeholder=t["audience_placeholder"])
+        row1 = st.columns(2)
+        with row1[0]:
+            content_type_label = st.selectbox(t["content_type"], list(content_labels.keys()))
+        with row1[1]:
+            style_label = st.selectbox(t["strategy"], list(style_labels.keys()))
+        row2 = st.columns(2)
+        with row2[0]:
+            hashtag_language = st.selectbox(t["hashtag_language"], HASHTAG_LANGUAGES, index=0)
+        with row2[1]:
+            count = st.slider(t["count"], min_value=15, max_value=40, value=30, step=5)
+        row3 = st.columns(2)
+        with row3[0]:
+            model = st.selectbox(t["model"], ["gpt-4.1-mini", "gpt-4.1"], index=0)
+        with row3[1]:
+            app_language = st.selectbox(t["language"], APP_LANGUAGES, index=APP_LANGUAGES.index(app_language), key="app_language")
+            t = UI_TEXT[app_language]
+            content_labels = {localize_content_type(key, t): key for key in CONTENT_TYPES}
+            style_labels = {localize_style(key, t): key for key in HASHTAG_STYLES}
+        row4 = st.columns(2)
+        with row4[0]:
+            st.text_input(t["api_key"], type="password", key="api_key", help=t["api_key_help"])
+        with row4[1]:
+            st.caption(t["api_key_help"])
+        row5 = st.columns(2)
+        with row5[0]:
+            generate = st.button(t["generate"], type="primary", use_container_width=True)
+        with row5[1]:
+            regenerate = st.button(t["regenerate"], use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 content_type_key = content_labels[content_type_label]
 style_key = style_labels[style_label]
@@ -783,41 +796,44 @@ with right_col:
         """,
         unsafe_allow_html=True,
     )
-    if sections and flat_hashtags:
-        st.markdown(
-            f"""
-            <div class="section-title" style="font-size:1.3rem; margin-bottom:0.15rem;">{t["result_title"]}</div>
-            <div class="result-copy">{t["result_copy"]}</div>
-            <div class="metric-grid">
-              {render_metric(t["count_card"], str(total_generated))}
-              {render_metric(t["lang_card"], last_language)}
-              {render_metric(t["strategy_card"], localize_style(last_style, t))}
-              {render_metric(t["format_card"], localize_content_type(last_content_type, t))}
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        action_cols = st.columns([0.42, 0.58])
-        with action_cols[0]:
-            copy_button(flat_hashtags, t["copy"])
-        with action_cols[1]:
-            st.download_button(
-                t["download"],
-                data=flat_hashtags,
-                file_name=t["file_name"],
-                mime="text/plain",
-                use_container_width=True,
+    with st.container():
+        st.markdown('<div class="results-shell">', unsafe_allow_html=True)
+        if sections and flat_hashtags:
+            st.markdown(
+                f"""
+                <div class="section-title" style="font-size:1.3rem; margin-bottom:0.15rem;">{t["result_title"]}</div>
+                <div class="result-copy">{t["result_copy"]}</div>
+                <div class="metric-grid">
+                  {render_metric(t["count_card"], str(total_generated))}
+                  {render_metric(t["lang_card"], last_language)}
+                  {render_metric(t["strategy_card"], localize_style(last_style, t))}
+                  {render_metric(t["format_card"], localize_content_type(last_content_type, t))}
+                </div>
+                """,
+                unsafe_allow_html=True,
             )
-        groups_html = "".join(render_group_card(group_label(key, t), sections.get(key, [])) for key in GROUP_ORDER)
-        st.markdown(f'<div class="group-grid" style="margin-top:0.85rem;">{groups_html}</div>', unsafe_allow_html=True)
-        st.text_area(t["result_title"], flat_hashtags, height=170, label_visibility="collapsed")
-    else:
-        st.markdown(
-            f"""
-            <div class="empty-state">
-              <div class="empty-title">{t["empty_title"]}</div>
-              <div class="empty-copy">{t["empty_copy"]}</div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+            action_cols = st.columns([0.42, 0.58])
+            with action_cols[0]:
+                copy_button(flat_hashtags, t["copy"])
+            with action_cols[1]:
+                st.download_button(
+                    t["download"],
+                    data=flat_hashtags,
+                    file_name=t["file_name"],
+                    mime="text/plain",
+                    use_container_width=True,
+                )
+            groups_html = "".join(render_group_card(group_label(key, t), sections.get(key, [])) for key in GROUP_ORDER)
+            st.markdown(f'<div class="group-grid" style="margin-top:0.85rem;">{groups_html}</div>', unsafe_allow_html=True)
+            st.text_area(t["result_title"], flat_hashtags, height=170, label_visibility="collapsed")
+        else:
+            st.markdown(
+                f"""
+                <div class="empty-state">
+                  <div class="empty-title">{t["empty_title"]}</div>
+                  <div class="empty-copy">{t["empty_copy"]}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        st.markdown('</div>', unsafe_allow_html=True)
